@@ -9,6 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.GridView;
+
+import java.util.ArrayList;
+
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button bLogin;
@@ -29,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return super.onOptionsItemSelected(item);
         }
     */
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
