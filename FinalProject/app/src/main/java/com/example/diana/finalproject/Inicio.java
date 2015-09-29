@@ -17,11 +17,11 @@ public class Inicio extends AppCompatActivity {
     ArrayList prgmName;
 
     //    name of the companies
-    public static String [] prgmNameList={"Amazon","Apple","Cisco","Dell","Ebay","Facebook","GE","Google","HP",
+    public static String [] company ={"Amazon","Apple","Cisco","Dell","Ebay","Facebook","GE","Google","HP",
             "Intel","Logitech","Microsoft","Oracle","TI","Yelp"};
 
     //    name of the images linked to the names
-    public static int [] prgmImages={R.drawable.amazon,R.drawable.apple,R.drawable.cisco,R.drawable.dell
+    public static int [] logo ={R.drawable.amazon,R.drawable.apple,R.drawable.cisco,R.drawable.dell
             ,R.drawable.ebay,R.drawable.facebook,R.drawable.ge,R.drawable.google,R.drawable.hp,R.drawable.intel
             ,R.drawable.logitech,R.drawable.microsoft,R.drawable.oracle,R.drawable.ti,R.drawable.yelp};
 
@@ -30,8 +30,8 @@ public class Inicio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_grid);
         gv=(GridView) findViewById(R.id.gridView1);
-        gv.setAdapter(new ShowInicio(this, prgmNameList, prgmImages));
+        gv.setAdapter(new ShowInicio(this, company, logo));
     }
 }

@@ -69,7 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bLogin:
 
                 Log.d("CREATION", "bLogin is being executed!");
-
+                finish();
+                startActivity(new Intent(getApplicationContext(), Inicio.class));
                 break;
 
             case R.id.tvLinkRegistro:
