@@ -9,6 +9,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.GridView;
+
+import java.util.ArrayList;
+
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button bLogin;
@@ -29,12 +39,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return super.onOptionsItemSelected(item);
         }
     */
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         Log.i("CREATION", "holiwis");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // activity_main
 
         eMatricula = (EditText)findViewById(R.id.eMatricula);
         eContrasena = (EditText)findViewById(R.id.eContrasena);
@@ -56,7 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bLogin:
 
                 Log.d("CREATION", "bLogin is being executed!");
-
+                finish();
+                startActivity(new Intent(getApplicationContext(), Inicio.class));
                 break;
 
             case R.id.tvLinkRegistro:
