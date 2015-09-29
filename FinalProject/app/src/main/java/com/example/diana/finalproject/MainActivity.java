@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.i("CREATION", "holiwis");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // activity_main
 
         eMatricula = (EditText)findViewById(R.id.eMatricula);
         eContrasena = (EditText)findViewById(R.id.eContrasena);
