@@ -45,14 +45,15 @@
                             android:inputType="phone"
                             android:ems="10"
                             android:layout_gravity="center_horizontal" />
-            <EditText
-                android:id="@+id/eMensaje"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:ems="10"
-                android:hint="Mensaje"
-                android:layout_gravity="center_horizontal" />
+
+
+                        <EditText
+                            android:id="@+id/eMensaje"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Mensaje"
+                            android:layout_gravity="center_horizontal" />
 
 
             <Button

@@ -24,28 +24,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button bLogin;
     EditText eMatricula, eContrasena;
     TextView tvLinkRegistro, tvOlvidoPass;
-    /*
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item)
-        {
-            int id = item.getItemId();
-            if (id == R.id.tvLinkRegistro)
-            {
-                Log.d("CREATION", "tvLinkRegistro is being executed!");
-                finish();
-                Intent i = new Intent(this,Registro.class);
-                startActivity(i);
-            }
-            return super.onOptionsItemSelected(item);
-        }
-    */
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.i("CREATION", "holiwis");
+        Log.i("CREATION", "holi guapas");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // activity_main
 
@@ -62,27 +46,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //@Override
     public void onClick(View v)
-    {
+            {
 
-        switch(v.getId())
-        {
-            case R.id.bLogin:
+                switch(v.getId())
+                {
+                    case R.id.bLogin:
 
-                Log.d("CREATION", "bLogin is being executed!");
+                Log.d("CREATION", "INICIO is being executed!");
                 finish();
                 startActivity(new Intent(getApplicationContext(), Inicio.class));
                 break;
 
             case R.id.tvLinkRegistro:
 
-                Log.d("CREATION", "tvLinkRegistro is being executed!");
+                Log.d("CREATION", "REGISTRO is being executed!");
                 finish();
                 Intent i = new Intent(this,Registro.class);
                 startActivity(i);
                 break;
 
             case R.id.tvOlvidoPass:
-                Log.d("CREATION", "tvOlvidoPass is being executed!");
+                Log.d("CREATION", "FORGOTTEN PASS is being executed!");
                 finish();
                 i = new Intent(this,Recupera.class);
                 startActivity(i);
