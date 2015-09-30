@@ -32,6 +32,10 @@
             android:name=".Solicitud"
             android:label="@string/title_activity_solicitud" >
         </activity>
+        <activity
+            android:name=".Perfil"
+            android:label="@string/title_activity_perfil" >
+        </activity>
     </application>
 
 </manifest>
