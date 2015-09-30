@@ -5,5 +5,9 @@
     <string name="title_activity_register">register</string>
     <string name="title_activity_contrasenia">contrasenia</string>
     <string name="title_activity_solicitud">Solicitud</string>
+<<<<<<< HEAD
     <string name="title_activity_perfil">Perfil</string>
+=======
+    <string name="title_activity_vacante">Vacante</string>
+>>>>>>> d830e522749c3c51138ed113575f075cad2f324a
 </resources>
