@@ -1,7 +1,6 @@
 package com.example.diana.finalproject;
 
 import android.content.Intent;
-import android.sax.TextElementListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,30 +8,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
+import android.widget.TextView;
 
-public class Solicitud extends AppCompatActivity implements View.OnClickListener
+public class Vacante extends AppCompatActivity implements View.OnClickListener
 {
 
-    Button bEnviar;
-    EditText eCorreo, eCelular, eMensaje;
+    Button bAplicar;
+    TextView tvDescripcion;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        Log.i("CREATION", "Solicitud");
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_solicitud);
-
-        bEnviar = (Button) findViewById(R.id.bEnviar);
-        eCorreo = (EditText) findViewById(R.id.eCorreo);
-        eCelular = (EditText) findViewById(R.id.eCelular);
-        eMensaje = (EditText) findViewById(R.id.eMensaje);
+        setContentView(R.layout.activity_vacante);
 
 
-        bEnviar.setOnClickListener(this);
+        bAplicar = (Button) findViewById(R.id.bAplicar);
+        bAplicar.setOnClickListener(this);
+
+        // dependiendo del click, carga la info correspondiente
+
+
 
     }
 
@@ -40,14 +36,15 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)  // menu dropdown
+    public boolean onOptionsItemSelected(MenuItem item) // menu dropdown
     {
+        Log.i("CREATION", "Menu dropdown");
         int id = item.getItemId();
         if (id == R.id.action_logout)
         {
@@ -56,6 +53,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onBackPressed()
@@ -71,16 +69,19 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    @Override
-    public void onClick(View v) //botones
+
+
+    public void onClick(View v) // botones
     {
         switch (v.getId())
         {
-            case R.id.bEnviar: // se ha picado el boton enviar
-                Log.i("CREATION", "Enviar solicitud");
+            case R.id.bAplicar: // se ha picado el boton para aplicar a la vacante
+                Log.i("CREATION", "Aplicar");
+                finish();
+                Intent i = new Intent(this,Solicitud.class);
+                startActivity(i);
                 break;
         }
     }
-
 
 }

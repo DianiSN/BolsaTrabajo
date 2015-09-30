@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Final Project</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_register">register</string>
     <string name="title_activity_contrasenia">contrasenia</string>
     <string name="title_activity_solicitud">Solicitud</string>
+<<<<<<< HEAD
+    <string name="title_activity_perfil">Perfil</string>
+=======
+    <string name="title_activity_vacante">Vacante</string>
+>>>>>>> d830e522749c3c51138ed113575f075cad2f324a
 </resources>
