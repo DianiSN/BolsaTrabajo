@@ -44,6 +44,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvOlvidoPass.setOnClickListener(this);
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        Log.d("CREATION", "go back pressed!");
+        if(getFragmentManager().getBackStackEntryCount()>0)
+        {
+            getFragmentManager().popBackStackImmediate();
+
+        }
+    }
+
+
     //@Override
     public void onClick(View v) // botones
             {
