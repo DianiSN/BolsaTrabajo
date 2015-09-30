@@ -42,6 +42,12 @@
             android:name=".Vacante"
             android:label="@string/title_activity_vacante" >
         </activity>
+
+        <activity
+            android:name=".Editar_Perfil"
+            android:label="@string/title_activity_editPerfil" >
+        </activity>
+
     </application>
 
 </manifest>
