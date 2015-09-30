@@ -32,6 +32,10 @@
             android:name=".Solicitud"
             android:label="@string/title_activity_solicitud" >
         </activity>
+        <activity
+            android:name=".Vacante"
+            android:label="@string/title_activity_vacante" >
+        </activity>
     </application>
 
 </manifest>

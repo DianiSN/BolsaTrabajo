@@ -14,7 +14,7 @@ import android.widget.EditText;
 public class Registro extends AppCompatActivity implements View.OnClickListener
 {
 
-    Button bRegistro, bSolicitud;
+    Button bRegistro, bVacante;
     EditText eNombre, eApellido, eCorreo, eMatricula, eContrasena;
 
     @Override
@@ -28,16 +28,16 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
         eMatricula = (EditText) findViewById(R.id.eMatricula);
         eContrasena = (EditText) findViewById(R.id.eContrasena);
         bRegistro = (Button) findViewById(R.id.bRegistro);
-        bSolicitud = (Button) findViewById(R.id.bSolicitud);
+        bVacante = (Button) findViewById(R.id.bVacante);
 
         bRegistro.setOnClickListener(this);
-        bSolicitud.setOnClickListener(this);
+        bVacante.setOnClickListener(this);
 
     }
 
 
     @Override
-    public void onClick(View v)
+    public void onClick(View v) //botones
     {
         switch(v.getId())
         {
@@ -45,10 +45,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
                 break;
 
 
-            case R.id.bSolicitud:
-                Log.d("CREATION", "SOLICITUD is being executed!");
+            case R.id.bVacante:
+                Log.d("CREATION", "VACANTE is being executed!");
                 finish();
-                startActivity(new Intent(getApplicationContext(), Solicitud.class));
+                startActivity(new Intent(getApplicationContext(), Vacante.class));
                 break;
         }
     }
