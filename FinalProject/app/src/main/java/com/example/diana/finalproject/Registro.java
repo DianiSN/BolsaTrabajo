@@ -14,7 +14,7 @@ import android.widget.EditText;
 public class Registro extends AppCompatActivity implements View.OnClickListener
 {
 
-    Button bRegistro, bVacante;
+    Button bRegistro;
     EditText eNombre, eApellido, eCorreo, eMatricula, eContrasena;
 
     @Override
@@ -28,11 +28,25 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
         eMatricula = (EditText) findViewById(R.id.eMatricula);
         eContrasena = (EditText) findViewById(R.id.eContrasena);
         bRegistro = (Button) findViewById(R.id.bRegistro);
-        bVacante = (Button) findViewById(R.id.bVacante);
+
 
         bRegistro.setOnClickListener(this);
-        bVacante.setOnClickListener(this);
 
+
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Log.d("CREATION", "go back pressed!");
+        if(getFragmentManager().getBackStackEntryCount()>0)
+        {
+            getFragmentManager().popBackStackImmediate();
+        }else
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
 
@@ -45,11 +59,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
                 break;
 
 
-            case R.id.bVacante:
-                Log.d("CREATION", "VACANTE is being executed!");
-                finish();
-                startActivity(new Intent(getApplicationContext(), Vacante.class));
-                break;
+
         }
     }
 

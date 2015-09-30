@@ -44,6 +44,7 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
     @Override
     public boolean onOptionsItemSelected(MenuItem item) // menu dropdown
     {
+        Log.i("CREATION", "Menu dropdown");
         int id = item.getItemId();
         if (id == R.id.action_logout)
         {
@@ -54,6 +55,21 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
     }
 
 
+    @Override
+    public void onBackPressed()
+    {
+        Log.d("CREATION", "go back pressed!");
+        if(getFragmentManager().getBackStackEntryCount()>0)
+        {
+            getFragmentManager().popBackStackImmediate();
+        }else
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+
 
     public void onClick(View v) // botones
     {
@@ -61,6 +77,9 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
         {
             case R.id.bAplicar: // se ha picado el boton para aplicar a la vacante
                 Log.i("CREATION", "Aplicar");
+                finish();
+                Intent i = new Intent(this,Solicitud.class);
+                startActivity(i);
                 break;
         }
     }

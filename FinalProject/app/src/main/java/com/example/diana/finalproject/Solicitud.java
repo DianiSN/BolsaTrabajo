@@ -57,7 +57,19 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onBackPressed()
+    {
+        Log.d("CREATION", "go back pressed!");
+        if(getFragmentManager().getBackStackEntryCount()>0)
+        {
+            getFragmentManager().popBackStackImmediate();
+        }else
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
 
     @Override
     public void onClick(View v) //botones
