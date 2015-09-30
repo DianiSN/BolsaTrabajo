@@ -56,6 +56,8 @@ public class ShowInicio extends BaseAdapter
     @Override
     public View getView(final int position, View convertView, ViewGroup parent)
     {
+        // carga este por cada empresa,
+        // carga este por cada empresa cada que bajo la pantalla
 
         View rowView;
         TextView tv;
@@ -65,6 +67,11 @@ public class ShowInicio extends BaseAdapter
         img=(ImageView) rowView.findViewById(R.id.imageView1);
         tv.setText(result[position]);
         img.setImageResource(imageId[position]);
+
+
+
+        // cada que hay clic en una empresa
+
         rowView.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -72,7 +79,7 @@ public class ShowInicio extends BaseAdapter
             {
                 Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
 
-                
+                Log.i("CREATION", result[position]);
                 // Conectar con Vacante.class *************
 
 

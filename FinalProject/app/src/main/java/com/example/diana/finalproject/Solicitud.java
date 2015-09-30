@@ -16,6 +16,7 @@ import android.widget.EditText;
 public class Solicitud extends AppCompatActivity implements View.OnClickListener
 {
 
+    public static final String EMPRESA_BUNDLE = "EMPRESA_BUNDLE";
     Button bEnviar;
     EditText eCorreo, eCelular, eMensaje;
 

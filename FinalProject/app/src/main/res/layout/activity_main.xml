@@ -21,64 +21,78 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <TextView
         android:layout_width="match_parent"
         android:text="Matricula"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
 
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_weight="1" />
 
     <EditText
         android:id="@+id/eContrasena"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:gravity="center"
-        android:password="true" />
+        android:password="true"
+        android:layout_weight="1" />
 
     <TextView
         android:layout_width="match_parent"
         android:text="Contraseña"
       
-        android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="1" />
 
 
     <TextView
         android:id="@+id/tvOlvidoPass"
         android:layout_width="match_parent"
         android:text="¿Olvidaste tu contraseña?"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:clickable="true"
         android:textStyle="bold"
         android:layout_marginBottom="30dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:layout_weight="1" />
 
+        <RelativeLayout android:id="@+id/RelativeLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+                        <Button
+                            android:id="@+id/bLogin"
+                            android:text="INICIO"
+                            android:padding="1dp"
+                            android:background="@drawable/mybutton"
+                            android:gravity="center"
+                            android:layout_marginBottom="20dp"
 
-
-    <Button
-        android:id="@+id/bLogin"
-        android:text="INICIO"
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_centerHorizontal="true" />
+        </RelativeLayout>
 
     <TextView
         android:id="@+id/tvRegistro"
         android:layout_width="wrap_content"
         android:text="¿No tienes cuenta?"
         android:layout_gravity="center_horizontal"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
     <TextView
         android:id="@+id/tvLinkRegistro"
         android:layout_width="wrap_content"
         android:text="Registrate"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:clickable="true"
-        />
+        android:layout_weight="1" />
 
     </LinearLayout>
 </ScrollView>

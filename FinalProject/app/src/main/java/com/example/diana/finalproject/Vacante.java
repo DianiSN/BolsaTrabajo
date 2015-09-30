@@ -1,5 +1,7 @@
 package com.example.diana.finalproject;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +28,7 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
         bAplicar = (Button) findViewById(R.id.bAplicar);
         bAplicar.setOnClickListener(this);
 
-        // dependiendo del click, carga la info correspondiente
+        // dependiendo del click, carga la info correspondiente **
 
 
 
