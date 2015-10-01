@@ -52,7 +52,7 @@ public class Inicio extends AppCompatActivity {
 
         }else
         {
-            Intent intent = new Intent(this, Inicio.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
     }
