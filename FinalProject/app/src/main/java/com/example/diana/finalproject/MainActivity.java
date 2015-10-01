@@ -50,9 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-<<<<<<< HEAD
-    public void onBackPressed()
-=======
+
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -73,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onBackPressed()
 
->>>>>>> favorites
+
     {
         Log.d("CREATION", "go back pressed!");
         if(getFragmentManager().getBackStackEntryCount()>0)
