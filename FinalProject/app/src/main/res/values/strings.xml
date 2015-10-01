@@ -4,11 +4,23 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_register">register</string>
     <string name="title_activity_contrasenia">contrasenia</string>
+<<<<<<< HEAD
+=======
+    <string name="Favorites">Favoritos</string>
+    <string name="Bolsa_trabajo">Bolsa de Trabajo</string>
+
+>>>>>>> favorites
     <string name="title_activity_solicitud">Solicitud</string>
     <string name="title_activity_perfil">Perfil</string>
     <string name="title_activity_vacante">Vacante</string>
     <string name="title_activity_editPerfil">Editar Perfil</string>
 
+<<<<<<< HEAD
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+>>>>>>> favorites
 </resources>

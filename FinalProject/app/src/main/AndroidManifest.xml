@@ -22,7 +22,17 @@
         </activity>
         <activity
             android:name=".Inicio"
+<<<<<<< HEAD
             android:label="@string/app_name" >
+=======
+
+            android:label="@string/Bolsa_trabajo"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+
+>>>>>>> favorites
         </activity>
         <activity
             android:name=".Recupera"
@@ -31,12 +41,27 @@
         <activity
             android:name=".Solicitud"
             android:label="@string/title_activity_solicitud" >
+<<<<<<< HEAD
         </activity>
         <activity
 
             android:name=".Perfil"
             android:label="@string/title_activity_perfil" >
         </activity>
+=======
+        </activity>
+        <activity
+
+            android:name=".Perfil"
+            android:label="@string/title_activity_perfil" >
+        </activity>
+
+        <activity
+            android:name=".Favorites"
+            android:label="@string/Favorites">
+        </activity>
+
+>>>>>>> favorites
 
         <activity
             android:name=".Vacante"
@@ -48,6 +73,10 @@
             android:label="@string/title_activity_editPerfil" >
         </activity>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> favorites
     </application>
 
 </manifest>
