@@ -1,125 +1,147 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <GridLayout
-        android:layout_width="match_parent"
+
+    <ScrollView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="132dp"
-            android:layout_height="134dp"
-            android:id="@+id/imageView"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:src="@drawable/samanta" />
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_width="match_parent">
 
-        <GridLayout
-            android:layout_width="240dp"
-            android:layout_height="130dp"
-            android:layout_row="0"
-            android:layout_column="1">
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="132dp"
+                    android:layout_height="134dp"
+                    android:id="@+id/imageView"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:src="@drawable/samanta" />
+
+
+                <GridLayout
+                    android:layout_width="240dp"
+                    android:layout_height="130dp"
+                    android:layout_row="1"
+                    android:layout_column="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Samanta Herrera Chávez"
+                        android:id="@+id/name"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="center"
+                        android:textAlignment="center" />
+                </GridLayout>
+
+            </GridLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Samanta Herrera Chávez"
-                android:id="@+id/name"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:layout_gravity="center"
-                android:textAlignment="center" />
-        </GridLayout>
+                android:layout_weight="1.57"
+                android:weightSum="1">
 
-    </GridLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="EXPERIENCIA"
+                    android:id="@+id/tvExp"
+                    android:layout_gravity="center_horizontal" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.57"
-        android:weightSum="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend elit at erat dignissim luctus.
+                                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                                    Duis fermentum tincidunt hendrerit. Nam tempor, ex vel egestas blandit, justo enim placerat risus, non venenatis ligula lorem quis quam. Donec a nisi quis elit cursus tristique. Quisque velit mauris, lacinia non tortor ut, finibus sagittis purus. Morbi hendrerit, dui sit amet consequat sagittis, purus erat rutrum lacus, ac mattis tortor arcu sed massa. Integer ligula diam, laoreet vel lobortis nec, egestas id odio. Proin turpis ante, semper scelerisque elementum id, luctus id leo. Praesent ac feugiat sapien."
+                    android:id="@+id/experiencia" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="EXPERIENCIA"
-            android:id="@+id/tvExp"
-            android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="PROYECTOS"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
+                    android:id="@+id/tvProy"
+                    android:layout_gravity="center_horizontal" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/experiencia"
-            android:layout_weight="0.21" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Curabitur et imperdiet orci. Phasellus sed odio eu sapien finibus bibendum. Praesent efficitur pharetra metus in venenatis. Ut vehicula dui sed leo venenatis, quis posuere purus volutpat. Morbi efficitur libero non porttitor rutrum. Aenean ut ultrices quam. Fusce egestas lorem at feugiat laoreet. Aliquam consectetur efficitur lorem, nec rhoncus mauris pharetra sit amet. Donec et tortor pulvinar, sagittis mauris vitae, commodo est. Fusce molestie eget diam eget facilisis. Morbi malesuada vel augue eu ultricies. Proin sit amet porta turpis."
+                    android:id="@+id/proyectos"
+                    android:layout_gravity="center_horizontal" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="PROYECTOS"
-            android:id="@+id/tvProy"
-            android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="HABILIDADES"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
+                    android:id="@+id/tvHab"
+                    android:layout_gravity="center_horizontal" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/proyectos"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.18" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sed eget ornare massa. In ut arcu viverra, iaculis neque et, semper sapien. Donec ac dolor nibh. Quisque elementum maximus libero nec dapibus. Vestibulum eget quam et ipsum consectetur blandit eu eu orci. Etiam cursus risus non hendrerit viverra. Mauris placerat at ligula a pretium. Sed nec consectetur est, eu dictum mi. Duis mollis varius finibus. In hac habitasse platea dictumst. Nulla eleifend nisl quis lorem consectetur scelerisque. Aenean dignissim feugiat augue, at ornare nisi placerat vitae. Nulla in fringilla turpis, ut euismod ligula. Donec rutrum risus rutrum ullamcorper laoreet."
+                    android:id="@+id/habilidades" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="HABILIDADES"
-            android:id="@+id/tvHab"
-            android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="INTERESES"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
+                    android:id="@+id/tvInt"
+                    android:layout_gravity="center_horizontal" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/habilidades"
-            android:layout_weight="0.23" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nam blandit ac lacus vel commodo. Integer lacus sem, suscipit ut varius vel, pharetra in elit. Maecenas tincidunt enim imperdiet velit posuere aliquam. Aenean neque lectus, ornare quis luctus non, semper a quam. Proin tempus turpis vitae faucibus volutpat. Integer ornare aliquam elementum. Etiam fringilla tristique sapien, id mattis ligula dictum ac. Nulla eget enim sed enim feugiat molestie. Sed vel metus ut velit tincidunt aliquam. Sed accumsan felis vel nisi convallis euismod. Phasellus molestie pulvinar bibendum. Vestibulum ac tortor urna. Ut et volutpat est. In aliquet elementum risus non lobortis. Sed mollis nisi vitae leo placerat placerat. Vivamus non sem enim."
+                    android:id="@+id/intereses"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.18" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="INTERESES"
-            android:id="@+id/tvInt"
-            android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="ACTIVIDADES EXTRACURRICULARES"
+                    android:id="@+id/tvActividades"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
+                    android:layout_gravity="center_horizontal" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/intereses"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.18" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="ACTIVIDADES CURRICULARES"
-            android:id="@+id/tvActividades"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/actividades"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.18" />
-    </LinearLayout>
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Integer ac tristique lectus. Curabitur posuere sed risus sit amet mollis. Maecenas ut urna tristique, convallis odio sed, gravida ante. Fusce sit amet nisi lorem. Morbi venenatis lacus sit amet dolor semper auctor. Nam cursus nibh orci, nec tempor neque faucibus sed. Integer posuere euismod finibus. Etiam vel finibus mi, sit amet mollis velit. Nulla commodo rhoncus laoreet. Duis et nibh et ipsum vehicula facilisis. Etiam elit mi, sodales et nibh nec, maximus congue lectus."
+                    android:id="@+id/actividades"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.18" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
