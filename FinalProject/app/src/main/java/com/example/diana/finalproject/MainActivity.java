@@ -26,8 +26,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button bLogin;
-    EditText eMatricula, eContrasena;
+    Button bLogin;    EditText eMatricula, eContrasena;
     TextView tvLinkRegistro, tvOlvidoPass;
 
 
@@ -58,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-
+        if (id == R.id.action_settings)
+        {
             Toast.makeText(MainActivity.this, "Ayyyyy!",
                     Toast.LENGTH_SHORT).show();
             return true;
@@ -70,14 +69,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void onBackPressed()
-
-
     {
         Log.d("CREATION", "go back pressed!");
         if(getFragmentManager().getBackStackEntryCount()>0)
         {
             getFragmentManager().popBackStackImmediate();
-
         }
     }
 

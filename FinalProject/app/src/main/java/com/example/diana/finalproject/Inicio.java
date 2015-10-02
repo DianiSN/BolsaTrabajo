@@ -11,7 +11,8 @@ import android.widget.GridView;
 
 import java.util.ArrayList;
 
-public class Inicio extends AppCompatActivity {
+public class Inicio extends AppCompatActivity
+{
 
     GridView gv;
     Context context;
@@ -27,6 +28,13 @@ public class Inicio extends AppCompatActivity {
             ,R.drawable.logitech,R.drawable.microsoft,R.drawable.oracle,R.drawable.ti,R.drawable.yelp};
 
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item)  // menu dropdown
     {
@@ -37,6 +45,17 @@ public class Inicio extends AppCompatActivity {
             finish();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
+        else if (id == R.id.action_fav)
+        {
+            finish();
+            startActivity(new Intent(getApplicationContext(), Favorites.class));
+
+        }else if (id == R.id.action_perfil)
+        {
+            finish();
+            startActivity(new Intent(getApplicationContext(), Perfil.class));
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
