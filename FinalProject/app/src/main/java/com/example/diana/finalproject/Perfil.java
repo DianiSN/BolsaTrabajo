@@ -16,6 +16,14 @@ import android.widget.GridView;
  */
 public class Perfil extends AppCompatActivity {
     @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_perfil);
+    }
+
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_perfil, menu);
@@ -29,27 +37,33 @@ public class Perfil extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_edit) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), Editar_Perfil.class));
 
             return true;
         }
+        else if(id == R.id.action_logout){
+            finish();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
 
-
-    /*public void onClick(View v) // botones
+    @Override
+    public void onBackPressed()
     {
-        switch (v.getId()) {
-            case R.id.bLogin:
-                Log.d("CREATION", "EDITAR PERFIL is being executed!");
-                finish();
-                startActivity(new Intent(getApplicationContext(), Editar_Perfil.class));
-                break;
+        if(getFragmentManager().getBackStackEntryCount()>0)
+        {
+            getFragmentManager().popBackStackImmediate();
+        }else
+        {
+            Intent intent = new Intent(this, Inicio.class);
+            startActivity(intent);
         }
-    }*/
+    }
 
 
 }

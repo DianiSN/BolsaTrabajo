@@ -10,7 +10,7 @@
     tools:context="com.example.diana.finalproject.Solicitud">
 
     <item android:id="@+id/action_logout"
-        android:title="Logout"
+        android:title="Salir"
         android:orderInCategory="100"
         app:showAsAction="never"/>
 
