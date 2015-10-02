@@ -75,6 +75,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="EXPERIENCIA"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:id="@+id/tvExp"
                     android:layout_gravity="center_horizontal" />
 
@@ -89,6 +91,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="PROYECTOS"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
                     android:id="@+id/tvProy"
                     android:layout_gravity="center_horizontal" />
 
@@ -103,6 +107,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="HABILIDADES"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
                     android:id="@+id/tvHab"
                     android:layout_gravity="center_horizontal" />
 
@@ -117,6 +123,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="INTERESES"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
                     android:id="@+id/tvInt"
                     android:layout_gravity="center_horizontal" />
 
@@ -131,6 +139,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="ACTIVIDADES CURRICULARES"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
                     android:id="@+id/tvActividades"
                     android:layout_gravity="center_horizontal" />
 
@@ -155,6 +165,7 @@
                         android:id="@+id/bSave"
                         android:padding="1dp"
                         android:paddingRight="10dp"
+                        android:paddingTop="10dp"
                         android:background="@drawable/mybutton"
                         android:gravity="center"
                         android:layout_marginBottom="10dp"
@@ -170,6 +181,7 @@
                         android:background="@drawable/mybutton"
                         android:gravity="center"
                         android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
                         android:layout_marginBottom="20dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_row="0"
