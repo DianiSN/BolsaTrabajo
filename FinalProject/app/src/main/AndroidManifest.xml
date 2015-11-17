@@ -38,6 +38,10 @@
             android:label="@string/app_name" >
         </activity>
         <activity
+            android:name=".ShowTabs"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name=".Solicitud"
             android:label="@string/title_activity_solicitud" >
 
