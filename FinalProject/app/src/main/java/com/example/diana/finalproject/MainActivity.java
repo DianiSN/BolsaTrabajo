@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Log.d("CREATION", "INICIO is being executed!");
                 finish();
-                startActivity(new Intent(getApplicationContext(), Inicio.class));
+                startActivity(new Intent(getApplicationContext(), ShowTabs.class));
                 break;
 
             case R.id.tvLinkRegistro:
