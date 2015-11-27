@@ -47,6 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     }
 
+    //metodos para insertar o consultar informacion de USER
     public boolean registerUser(String matricula, String nombre, String apellidos, String correo_alt, String contrasena) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -63,6 +64,20 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         }
     }
 
+    public Cursor getMail(String matricula) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result  = db.rawQuery("SELECT CORREO_ALT FROM " + TABLE_NAME + " WHERE MATRICULA =" + matricula, null);
+        return result;
+    }
+
+    public Cursor getInicio(String matricula, String contrasena) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result  = db.rawQuery("SELECT MATRICULA, CONTRASENA FROM " + TABLE_NAME + " WHERE MATRICULA =" + matricula, null);
+        return result;
+    }
+
+
+    //metodos para insertar o consultar informacion de PROFILE
     public boolean insertDataProfile(String matricula,String experiencia, String proyectos, String habilidades, String intereses, String extra, int foto) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -101,8 +116,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         Cursor result  = db.rawQuery("SELECT * FROM " + TABLE_NAMEB + " WHERE MATRICULA =" + matricula, null);
         return result;
     }
-
-
 
 
 }
