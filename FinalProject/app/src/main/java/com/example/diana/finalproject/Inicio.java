@@ -45,16 +45,16 @@ public class Inicio extends AppCompatActivity
             finish();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
-        else if (id == R.id.action_fav)
-        {
-            finish();
-            startActivity(new Intent(getApplicationContext(), Favorites.class));
-
-        }else if (id == R.id.action_perfil)
-        {
-            finish();
-            startActivity(new Intent(getApplicationContext(), Perfil.class));
-        }
+//        else if (id == R.id.action_fav)
+//        {
+//            finish();
+//            startActivity(new Intent(getApplicationContext(), Favorites.class));
+//
+//        }else if (id == R.id.action_perfil)
+//        {
+//            finish();
+//            startActivity(new Intent(getApplicationContext(), Perfil.class));
+//        }
 
         return super.onOptionsItemSelected(item);
     }

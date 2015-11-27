@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -72,6 +74,35 @@ public class Favorites extends AppCompatActivity {
         gv.setAdapter(new ShowFavorites(this,favCompany,favLogo));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)  // menu dropdown
+    {
+        Log.i("CREATION", "Menu dropdown");
+        int id = item.getItemId();
+        if (id == R.id.action_logout)
+        {
+            finish();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+//        else if (id == R.id.action_fav)
+//        {
+//            finish();
+//            startActivity(new Intent(getApplicationContext(), Favorites.class));
+//
+//        }else if (id == R.id.action_perfil)
+//        {
+//            finish();
+//            startActivity(new Intent(getApplicationContext(), Perfil.class));
+//        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
     @Override

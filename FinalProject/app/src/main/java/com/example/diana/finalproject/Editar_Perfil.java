@@ -65,7 +65,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
             getFragmentManager().popBackStackImmediate();
         }else
         {
-            Intent intent = new Intent(this, Perfil.class);
+            Intent intent = new Intent(this, ShowTabs.class);
             startActivity(intent);
         }
     }
@@ -85,13 +85,13 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         String inte= intereses.getText().toString();
         String ext = extra.getText().toString();
 
-        boolean isUpdated = db.updateDataProfile(matricula,exp,hab,pro,inte,ext);
-        if (isUpdated) {
-            Toast.makeText(this, "The data was updated", Toast.LENGTH_LONG);
-        } else {
-            Toast.makeText(this, "The data was not updated", Toast.LENGTH_LONG);
-
-        }
+////        boolean isUpdated = db.updateDataProfile(matricula,exp,hab,pro,inte,ext);
+//        if (isUpdated) {
+//            Toast.makeText(this, "The data was updated", Toast.LENGTH_LONG);
+//        } else {
+//            Toast.makeText(this, "The data was not updated", Toast.LENGTH_LONG);
+//
+//        }
     }
 
     public void onClick(View v) // botones
