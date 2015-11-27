@@ -21,6 +21,12 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public static final String COL_6B = "EXTRA";
     public static final String COL_7B = "FOTO";
 
+    public static final String TABLE_NAME = "USER";
+    public static final String COL_1 = "MATRICULA";
+    public static final String COL_2 = "NOMBRE";
+    public static final String COL_3 = "APELLIDOS";
+    public static final String COL_4 = "CORREO_ALT";
+    public static final String COL_5 = "CONTRASENA";
 
 
     public DataBaseHelper(Context context) {
@@ -30,8 +36,10 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAMEB +
-                " (MATRICULA STRING PRIMARY KEY, EXPERIENCIA TEXT, PROYECTOS TEXT, HABILIDADES TEXT, INTERESES TEXT, EXTRA TEXT, FOTO INTEGER);");
+                " (MATRICULA String PRIMARY KEY, EXPERIENCIA TEXT, PROYECTOS TEXT, HABILIDADES TEXT, INTERESES TEXT, EXTRA TEXT, FOTO INTEGER);");
 
+        db.execSQL("CREATE TABLE " + TABLE_NAME +
+                " (MATRICULA String PRIMARY KEY, NOMBRE TEXT, APELLIDOS TEXT, CORREO_ALT TEXT, CONTRASENA String);");
     }
 
     @Override
@@ -39,6 +47,21 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     }
 
+    public boolean registerUser(String matricula, String nombre, String apellidos, String correo_alt, String contrasena) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, matricula);
+        contentValues.put(COL_2, nombre);
+        contentValues.put(COL_3, apellidos);
+        contentValues.put(COL_4, correo_alt);
+        contentValues.put(COL_5, contrasena);
+        long result = db.insert(TABLE_NAME, null, contentValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public boolean insertDataProfile(String matricula,String experiencia, String proyectos, String habilidades, String intereses, String extra, int foto) {
         SQLiteDatabase db = this.getWritableDatabase();
