@@ -13,7 +13,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     public static final String DB_NAME = "bolsaTrabajo.db";
     public static final String TABLE_NAMEB = "perfil";
-    public static final String COL_1B = "MATRICULA";
+    public static final String COL_1B = "MATRICULA1";
     public static final String COL_2B = "EXPERIENCIA";
     public static final String COL_3B = "PROYECTOS";
     public static final String COL_4B = "HABILIDADES";
@@ -36,10 +36,10 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAMEB +
-                " (MATRICULA String PRIMARY KEY, EXPERIENCIA TEXT, PROYECTOS TEXT, HABILIDADES TEXT, INTERESES TEXT, EXTRA TEXT, FOTO INTEGER);");
+                " (MATRICULA1 TEXT PRIMARY KEY NOT NULL, EXPERIENCIA TEXT, PROYECTOS TEXT, HABILIDADES TEXT, INTERESES TEXT, EXTRA TEXT, FOTO INTEGER);");
 
         db.execSQL("CREATE TABLE " + TABLE_NAME +
-                " (MATRICULA String PRIMARY KEY, NOMBRE TEXT, APELLIDOS TEXT, CORREO_ALT TEXT, CONTRASENA String);");
+                " (MATRICULA TEXT PRIMARY KEY NOT NULL, NOMBRE TEXT, APELLIDOS TEXT, CORREO_ALT TEXT, CONTRASENA TEXT);");
     }
 
     @Override

@@ -10,12 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener
 {
-
+    DataBaseHelper database;
     Button bRegistro;
-    EditText eNombre, eApellido, eCorreo, eMatricula, eContrasena;
+    EditText eNombre, eApellido, eCorreo, eMatricula, contrasenia, contrasenia2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -23,15 +24,17 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
+        database = new DataBaseHelper(this);
         eNombre = (EditText) findViewById(R.id.eNombre);
+        eApellido = (EditText) findViewById(R.id.eApellido);
         eCorreo = (EditText) findViewById(R.id.eCorreo);
         eMatricula = (EditText) findViewById(R.id.eMatricula);
-        eContrasena = (EditText) findViewById(R.id.eContrasena);
+        contrasenia = (EditText) findViewById(R.id.contrasena);
+        contrasenia2 = (EditText) findViewById(R.id.contrasena2);
         bRegistro = (Button) findViewById(R.id.bRegistro);
 
-
         bRegistro.setOnClickListener(this);
-
 
     }
 
@@ -49,13 +52,39 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    public void registerUser()
+    {
+        String nombre =  eNombre.getText().toString();
+        String apellido = eApellido.getText().toString();
+        String correo = eCorreo.getText().toString();
+        String matricula = eMatricula.getText().toString();
+        String contraseniaa = contrasenia.getText().toString();
+        String contraseniaa2 = contrasenia2.getText().toString();
 
-    @Override
+        Boolean isInserted = false;
+        if(contraseniaa.equals(contraseniaa2))
+        {
+            isInserted = database.registerUser(matricula, nombre, apellido, correo, contraseniaa);
+
+            if (isInserted)
+            {
+                Toast.makeText(this, "The data was inserted", Toast.LENGTH_LONG);
+            } else
+            {
+                Toast.makeText(this, "The data was not inserted", Toast.LENGTH_LONG);
+            }
+        }else
+        {
+            Toast.makeText(this, "Las contraseñas no coinciden. Intente de nuevo.", Toast.LENGTH_LONG);
+        }
+    }
+        @Override
     public void onClick(View v) //botones
     {
         switch(v.getId())
         {
             case R.id.bRegistro:
+                    registerUser();
                 break;
 
 
