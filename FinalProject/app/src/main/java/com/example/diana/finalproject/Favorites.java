@@ -50,20 +50,20 @@ public class Favorites extends AppCompatActivity {
     {
         favCompany = favs.getInstance().getFavCompany();
         favLogo = favs.getInstance().getFavLogo();
-        boolean result = favs.getInstance().addCompany("GE", R.drawable.ge);
-        boolean result1 =favs.getInstance().addCompany("Facebook",R.drawable.facebook);
-        if(result1 == false || result == false){
+//        boolean result = favs.getInstance().addCompany("GE", R.drawable.ge);
+//        boolean result1 =favs.getInstance().addCompany("Facebook",R.drawable.facebook);
+//        if(result1 == false || result == false){
+//
+//            Log.d("CREATION","Company not added");
+//
+//        }
 
-            Log.d("CREATION","Company not added");
-
-        }
-
-        if(favs.getInstance().findCompany("GE") != 1){
-
-            Log.d("CREATE","GE FOUND favorites");
-
-
-        }
+//        if(favs.getInstance().findCompany("GE") != 1){
+//
+//            Log.d("CREATE","GE FOUND favorites");
+//
+//
+//        }
 
 
         super.onCreate(savedInstanceState);
