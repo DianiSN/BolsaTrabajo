@@ -68,14 +68,14 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
 
             if (isInserted)
             {
-                Toast.makeText(this, "The data was inserted", Toast.LENGTH_LONG);
+                Toast.makeText(this, "The data was inserted", Toast.LENGTH_LONG).show();
             } else
             {
-                Toast.makeText(this, "The data was not inserted", Toast.LENGTH_LONG);
+                Toast.makeText(this, "The data was not inserted", Toast.LENGTH_LONG).show();
             }
         }else
         {
-            Toast.makeText(this, "Las contraseñas no coinciden. Intente de nuevo.", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Las contraseñas no coinciden. Intente de nuevo.", Toast.LENGTH_LONG).show();
         }
     }
         @Override
