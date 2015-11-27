@@ -70,9 +70,9 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         return result;
     }
 
-    public Cursor getInicio(String matricula, String contrasena) {
+    public Cursor getInicio(String matricula) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result  = db.rawQuery("SELECT MATRICULA, CONTRASENA FROM " + TABLE_NAME + " WHERE MATRICULA =" + matricula, null);
+        Cursor result  = db.rawQuery("SELECT  CONTRASENA FROM " + TABLE_NAME + " WHERE MATRICULA ='" + matricula +"'", null);
         return result;
     }
 
