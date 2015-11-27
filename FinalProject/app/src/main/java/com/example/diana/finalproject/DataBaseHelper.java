@@ -58,7 +58,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         }
     }
 
-    public boolean updateDataProfile(String matricula,String experiencia, String proyectos, String habilidades, String intereses, String extra, int foto) {
+    public boolean updateDataProfile(String matricula,String experiencia, String proyectos, String habilidades, String intereses, String extra) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1B, matricula);
@@ -67,10 +67,20 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         contentValues.put(COL_4B, habilidades);
         contentValues.put(COL_5B,intereses);
         contentValues.put(COL_6B,extra);
+
+        db.update(TABLE_NAMEB, contentValues, "MATRICULA = ?", new String[]{matricula});
+        return true;
+    }
+
+    public boolean updateDataProfilePic(String matricula,int foto){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
         contentValues.put(COL_7B,foto);
 
         db.update(TABLE_NAMEB, contentValues, "MATRICULA = ?", new String[]{matricula});
         return true;
+
     }
 
     public Cursor getDataProfile(String matricula) {
