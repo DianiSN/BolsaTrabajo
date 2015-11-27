@@ -3,6 +3,7 @@ package com.example.diana.finalproject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -24,9 +25,9 @@ public class ShowInicio extends BaseAdapter
     public ShowInicio(Inicio inicio, String[] company, int[] logo)
     {
 
-        result=company;
+        result=company; //array of the companies names
         context=inicio;
-        imageId=logo;
+        imageId=logo; //array of the companies logos
 
         inflater = ( LayoutInflater )context. getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -77,14 +78,21 @@ public class ShowInicio extends BaseAdapter
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context,Vacante.class);
+                Bundle b = new Bundle();
+                b.putInt("image",imageId[position]);
+                b.putInt("position",position);
+//                intent.putExtras(b);
+                b.putString("name",result[position]);
+                intent.putExtras(b);
+                v.getContext().startActivity(intent);
                 Log.i("CREATION", result[position]);
                 // Conectar con Vacante.class *************
 
 
-                // Carga la vacante dependiendo la empresa que se dio clic
-                // debo enviarle el result[position] para que cargue ladebida información
+                // Carga la vacante dependiendo la empresa que se dio click
+                // debo enviarle el result[position] para que cargue la debida información
 
 
 

@@ -1,6 +1,9 @@
 package com.example.diana.finalproject;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +12,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by Diana on 9/30/15.
  */
 public class ShowFavorites extends BaseAdapter {
 
-    String [] result;
+    ArrayList result;
     Context context;
-    int [] imageId;
+    ArrayList imageId;
     private static LayoutInflater inflater=null;
 
-    public ShowFavorites(Favorites favorites, String[] favoriteCompany, int[] logo) {
+    public ShowFavorites(Favorites favorites, ArrayList favoriteCompany, ArrayList logo) {
 
         result=favoriteCompany;
         context=favorites;
@@ -32,7 +37,7 @@ public class ShowFavorites extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return result.length;
+        return result.size();
     }
 
     @Override
@@ -53,12 +58,22 @@ public class ShowFavorites extends BaseAdapter {
         rowView = inflater.inflate(R.layout.activity_fav, null);
         tv=(TextView) rowView.findViewById(R.id.textView1);
         img=(ImageView) rowView.findViewById(R.id.imageView1);
-        tv.setText(result[position]);
-        img.setImageResource(imageId[position]);
+        tv.setText(result.get(position).toString());
+        img.setImageResource((Integer)imageId.get(position));
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_LONG).show();
+
+//                Toast.makeText(context, "You Clicked " + result[position], Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context,Vacante.class);
+                Bundle b = new Bundle();
+                b.putInt("image",(Integer)imageId.get(position));
+                b.putInt("position",position);
+//                intent.putExtras(b);
+                b.putString("name",result.get(position).toString());
+                intent.putExtras(b);
+                v.getContext().startActivity(intent);
+                Log.i("CREATION", result.get(position).toString());
             } });
         return rowView;
     }

@@ -18,21 +18,58 @@ public class Favorites extends AppCompatActivity {
     Context context;
     ArrayList prgmName;
 
-    //    name of the companies
-    public static String [] favoriteCompany ={"Facebook","GE","Google","HP",
-           "Oracle","TI","Yelp"};
+    SingletonFavorites favs;
+    //name of the companies
+//    public static String [] favoriteCompany ={"Facebook","GE","Google","HP",
+//           "Oracle","TI","Yelp"};
 
-    //    name of the images linked to the names
-    public static int [] logo ={R.drawable.facebook,R.drawable.ge,R.drawable.google,R.drawable.hp,R.drawable.oracle,R.drawable.ti,R.drawable.yelp};
+//    public static ArrayList favCompany = new ArrayList();
+//    public static ArrayList favLogo = new ArrayList();
+
+    public static ArrayList favCompany;
+    public static ArrayList favLogo;
+
+    //name of the images linked to the names
+//    public static int [] logo ={R.drawable.facebook,R.drawable.ge,R.drawable.google,R.drawable.hp,R.drawable.oracle,R.drawable.ti,R.drawable.yelp};
+
+
+    public Favorites() {
+
+
+//        favCompany.add("Facebook");
+//        favCompany.add("GE");
+//        favLogo.add(R.drawable.facebook);
+//        favLogo.add(R.drawable.ge);
+
+    }
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        favCompany = favs.getInstance().getFavCompany();
+        favLogo = favs.getInstance().getFavLogo();
+        boolean result = favs.getInstance().addCompany("GE", R.drawable.ge);
+        boolean result1 =favs.getInstance().addCompany("Facebook",R.drawable.facebook);
+        if(result1 == false || result == false){
+
+            Log.d("CREATION","Company not added");
+
+        }
+
+        if(favs.getInstance().findCompany("GE") != 1){
+
+            Log.d("CREATE","GE FOUND favorites");
+
+
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gridfav);
         gv=(GridView) findViewById(R.id.gridView1);
-        gv.setAdapter(new ShowFavorites(this, favoriteCompany, logo));
+        gv.setAdapter(new ShowFavorites(this,favCompany,favLogo));
     }
 
 
@@ -50,5 +87,39 @@ public class Favorites extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+//    public int findCompany(String name){
+//
+//        if(favCompany.contains(name)){
+//
+//            return favCompany.indexOf(name);
+//        }else{
+//            return -1;
+//        }
+//
+//    }
+//
+//    public boolean removeCompany(int position){
+//
+//        favCompany.remove(position);
+//        favLogo.remove(position);
+//        return true;
+//    }
+//
+//    public boolean addCompany(String name, int image){
+//
+//        favCompany.add(name);
+//        favLogo.add(image);
+//        return true;
+//
+//    }
+
+
+
+
+
+
+
+
 
 }
