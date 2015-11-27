@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,9 +24,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
+    DataBaseHelper db;
     Button bLogin;    EditText eMatricula, eContrasena;
     TextView tvLinkRegistro, tvOlvidoPass;
 
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        db = new DataBaseHelper(this);
         Log.i("CREATION", "holi guapas");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // activity_main
@@ -77,34 +78,66 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public boolean login(){
+        String matricula = eMatricula.getText().toString();
+        String cont = eContrasena.getText().toString();
+        Log.d("Create ", matricula);
+
+        Cursor result = db.getInicio(matricula);
+
+        if (result.getCount() == 0) {
+            Toast.makeText(this, "The user doesn't exist", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        while(result.moveToNext()) {
+            String contra  = result.getString(0);
+            Log.d("Create ", contra);
+            if(contra.equals(cont)){
+                Toast.makeText(this, "Login", Toast.LENGTH_LONG).show();
+                return true;
+            } else {
+                Toast.makeText(this, "Not login", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     //@Override
     public void onClick(View v) // botones
             {
+                boolean loginn;
 
                 switch(v.getId())
                 {
+
                     case R.id.bLogin:
+                        loginn = login();
+                        Log.d("CREATION", "INICIO is being executed!");
+                        if (loginn){
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), ShowTabs.class));
+                        } else {
+                            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+                        }
+                        break;
 
-                Log.d("CREATION", "INICIO is being executed!");
-                finish();
-                startActivity(new Intent(getApplicationContext(), ShowTabs.class));
-                break;
+                    case R.id.tvLinkRegistro:
 
-            case R.id.tvLinkRegistro:
+                        Log.d("CREATION", "REGISTRO is being executed!");
+                        finish();
+                        Intent i = new Intent(this,Registro.class);
+                        startActivity(i);
+                        break;
 
-                Log.d("CREATION", "REGISTRO is being executed!");
-                finish();
-                Intent i = new Intent(this,Registro.class);
-                startActivity(i);
-                break;
-
-            case R.id.tvOlvidoPass:
-                Log.d("CREATION", "FORGOTTEN PASS is being executed!");
-                finish();
-                i = new Intent(this,Recupera.class);
-                startActivity(i);
-                break;
+                    case R.id.tvOlvidoPass:
+                        Log.d("CREATION", "FORGOTTEN PASS is being executed!");
+                        finish();
+                        i = new Intent(this,Recupera.class);
+                        startActivity(i);
+                        break;
 
         }
     }
