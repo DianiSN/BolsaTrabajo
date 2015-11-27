@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 /**
@@ -18,6 +20,7 @@ import android.view.MenuItem;
  */
 public class Editar_Perfil extends AppCompatActivity implements View.OnClickListener {
     Button bCancel, bSave;
+    DataBaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -62,9 +65,33 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
             getFragmentManager().popBackStackImmediate();
         }else
         {
-            Intent intent = new Intent(this, Perfil.class);
+            Intent intent = new Intent(this, ShowTabs.class);
             startActivity(intent);
         }
+    }
+
+    public void updateData(View view) {
+
+        EditText experiencias,habilidades,proyectos,intereses,extra;
+        experiencias = (EditText)view.findViewById(R.id.editExperiencia);
+        habilidades = (EditText)view.findViewById(R.id.editHabilidades);
+        proyectos = (EditText)view.findViewById(R.id.editPoyectos);
+        intereses = (EditText)view.findViewById(R.id.editIntereses);
+        extra = (EditText)view.findViewById(R.id.editActividades);
+
+        String exp = experiencias.getText().toString();
+        String hab = habilidades.getText().toString();
+        String pro = proyectos.getText().toString();
+        String inte= intereses.getText().toString();
+        String ext = extra.getText().toString();
+
+////        boolean isUpdated = db.updateDataProfile(matricula,exp,hab,pro,inte,ext);
+//        if (isUpdated) {
+//            Toast.makeText(this, "The data was updated", Toast.LENGTH_LONG);
+//        } else {
+//            Toast.makeText(this, "The data was not updated", Toast.LENGTH_LONG);
+//
+//        }
     }
 
     public void onClick(View v) // botones
@@ -72,6 +99,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         switch(v.getId())
         {
             case R.id.bSave:
+
                 finish();
                 startActivity(new Intent(getApplicationContext(), Perfil.class));
                 break;

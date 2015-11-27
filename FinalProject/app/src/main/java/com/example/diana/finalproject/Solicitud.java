@@ -67,7 +67,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
             getFragmentManager().popBackStackImmediate();
         }else
         {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, ShowTabs.class);
             startActivity(intent);
         }
     }

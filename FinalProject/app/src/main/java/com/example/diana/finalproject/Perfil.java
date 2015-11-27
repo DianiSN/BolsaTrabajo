@@ -60,7 +60,7 @@ public class Perfil extends AppCompatActivity {
             getFragmentManager().popBackStackImmediate();
         }else
         {
-            Intent intent = new Intent(this, Inicio.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
     }

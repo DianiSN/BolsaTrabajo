@@ -25,13 +25,6 @@
 
             android:label="@string/Bolsa_trabajo" >
 
-
-            android:label="@string/Bolsa_trabajo"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-
         </activity>
         <activity
             android:name=".Recupera"
