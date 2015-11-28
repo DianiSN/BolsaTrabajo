@@ -160,6 +160,9 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
                 Log.i("CREATION", "Aplicar");
                 finish();
                 Intent i = new Intent(this,Solicitud.class);
+                Bundle b = new Bundle();
+                b.putString("vacancy",job[position]);
+                i.putExtras(b);
                 startActivity(i);
                 break;
             case R.id.imageButton: // se ha picado el boton para ponerlo en favoritos

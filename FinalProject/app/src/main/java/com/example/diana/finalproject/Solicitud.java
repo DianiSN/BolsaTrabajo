@@ -21,6 +21,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
     public static final String EMPRESA_BUNDLE = "EMPRESA_BUNDLE";
     Button bEnviar;
     EditText eCorreo, eCelular, eMensaje;
+    String vacancy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,6 +29,9 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
         Log.i("CREATION", "Solicitud");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitud);
+
+        Bundle b = getIntent().getExtras();
+        vacancy = b.getString("vacancy");
 
         bEnviar = (Button) findViewById(R.id.bEnviar);
         eCorreo = (EditText) findViewById(R.id.eCorreo);
@@ -75,34 +79,16 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
     }
 
     protected void sendEmail() {
-        Intent chooser;
-        Log.i("Send email", "");
+        //Getting content for email
+        String email = "diansanieto@gmail.com";
+        String subject = vacancy;
+        String message = eMensaje.getText().toString().trim() + "\nNúmero de contacto: "+ eCelular.getText().toString().trim();
 
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
+        //Creating SendMail object
+        SendMail sm = new SendMail(this, email, subject, message);
 
-
-
-        String[] TO = {"a01320622@gmail.com"};
-        String[] CC = {"diansanieto@gmail.com"};
-
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
-        emailIntent.setType("message/rfc822");
-
-        chooser = Intent.createChooser(emailIntent,"Send email");
-
-
-        try {
-            startActivity(chooser);
-            finish();
-            Log.d("CREATE", "email sent with vacancy");
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(Solicitud.this,
-                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
-        }
+        //Executing sendmail to send email
+        sm.execute();
     }
 
     @Override
@@ -113,6 +99,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
             case R.id.bEnviar: // se ha picado el boton enviar
                 Log.i("CREATION", "Enviar solicitud");
                 sendEmail();
+                Log.i("CREATION", "solicitud Enviada");
                 break;
         }
     }
