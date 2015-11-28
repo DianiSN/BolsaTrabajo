@@ -1,6 +1,7 @@
 package com.example.diana.finalproject;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.sax.TextElementListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Solicitud extends AppCompatActivity implements View.OnClickListener
 {
@@ -72,6 +74,37 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    protected void sendEmail() {
+        Intent chooser;
+        Log.i("Send email", "");
+
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+
+
+
+        String[] TO = {"a01320622@gmail.com"};
+        String[] CC = {"diansanieto@gmail.com"};
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_CC, CC);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+        emailIntent.setType("message/rfc822");
+
+        chooser = Intent.createChooser(emailIntent,"Send email");
+
+
+        try {
+            startActivity(chooser);
+            finish();
+            Log.d("CREATE", "email sent with vacancy");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(Solicitud.this,
+                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onClick(View v) //botones
     {
@@ -79,6 +112,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
         {
             case R.id.bEnviar: // se ha picado el boton enviar
                 Log.i("CREATION", "Enviar solicitud");
+                sendEmail();
                 break;
         }
     }
