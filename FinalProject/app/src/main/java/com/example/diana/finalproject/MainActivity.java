@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean login(){
         String matricula = eMatricula.getText().toString();
         String cont = eContrasena.getText().toString();
-        Log.d("Create ", matricula);
 
         Cursor result = db.getInicio(matricula);
 
@@ -91,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         while(result.moveToNext()) {
             String contra  = result.getString(0);
-            Log.d("Create ", contra);
             if(contra.equals(cont)){
                 return true;
             } else {
@@ -118,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Intent i = new Intent(getApplicationContext(), ShowTabs.class);
                             Bundle b = new Bundle();
                             b.putString("image","");
+                            b.putString("matricula", eMatricula.getText().toString());
                             b.putInt("current",1);
                             i.putExtras(b);
                             startActivity(i);
