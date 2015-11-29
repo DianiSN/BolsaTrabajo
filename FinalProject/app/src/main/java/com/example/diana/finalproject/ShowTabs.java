@@ -65,6 +65,9 @@ public class ShowTabs extends Activity {
 
 //        VACANCY
         Intent intentVacancy = new Intent().setClass(this, Inicio.class);
+        Bundle di = new Bundle();
+        di.putString("matricula",matricula);
+        intentVacancy.putExtras(di);
         tabVacancy.setContent(intentVacancy);
         tabVacancy.setIndicator("Vacantes");
         myTabHost.addTab(tabVacancy);
@@ -73,7 +76,7 @@ public class ShowTabs extends Activity {
 
         Intent intentProfile = new Intent().setClass(this, Perfil.class);
         Bundle d = new Bundle();
-        b.putString("image",image);
+        d.putString("image", image);
         d.putString("matricula", matricula);
         intentProfile.putExtras(d);
         tabProfile.setContent(intentProfile);

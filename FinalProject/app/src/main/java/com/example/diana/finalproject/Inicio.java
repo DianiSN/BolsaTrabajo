@@ -17,6 +17,7 @@ public class Inicio extends AppCompatActivity
     GridView gv;
     Context context;
     ArrayList prgmName;
+    String matricula;
 
     //    name of the companies
     public static String [] company ={"Amazon","Apple","Cisco","Dell","Ebay","Facebook","GE","Google","HP",
@@ -27,6 +28,16 @@ public class Inicio extends AppCompatActivity
             ,R.drawable.ebay,R.drawable.facebook,R.drawable.ge,R.drawable.google,R.drawable.hp,R.drawable.intel
             ,R.drawable.logitech,R.drawable.microsoft,R.drawable.oracle,R.drawable.ti,R.drawable.yelp};
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_perfil);
+        setContentView(R.layout.activity_gridinicio);
+        Bundle b = getIntent().getExtras();
+        matricula = b.getString("matricula");
+        gv=(GridView) findViewById(R.id.gridView1);
+        gv.setAdapter(new ShowInicio(this, company, logo, matricula));
+    }
 
 
     @Override
@@ -77,12 +88,5 @@ public class Inicio extends AppCompatActivity
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_perfil);
-        setContentView(R.layout.activity_gridinicio);
-        gv=(GridView) findViewById(R.id.gridView1);
-        gv.setAdapter(new ShowInicio(this, company, logo));
-    }
+
 }

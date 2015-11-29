@@ -21,7 +21,7 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
     ImageButton bFavorites;
     TextView tvDescripcion;
     int image,position;
-    String name;
+    String name,matricula;
     boolean favorite = false;
 
     String [] companies;
@@ -70,7 +70,7 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
         image = b.getInt("image");
         name = b.getString("name");
         position = b.getInt("position");
-
+        matricula = b.getString("matricula");
         bAplicar = (Button) findViewById(R.id.bAplicar);
         bAplicar.setOnClickListener(this);
 
@@ -148,7 +148,8 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
             Intent intent = new Intent(this, ShowTabs.class);
             Bundle b = new Bundle();
             b.putString("image","");
-            b.putInt("current",1);
+            b.putInt("current", 1);
+            b.putString("matricula",matricula);
             intent.putExtras(b);
             startActivity(intent);
         }
@@ -167,6 +168,7 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
                 Bundle b = new Bundle();
                 b.putString("vacancy",job[position]);
                 b.putString("name",name);
+                b.putString("matricula",matricula);
                 i.putExtras(b);
                 startActivity(i);
                 break;

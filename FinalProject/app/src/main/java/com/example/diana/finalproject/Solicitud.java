@@ -21,7 +21,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
     public static final String EMPRESA_BUNDLE = "EMPRESA_BUNDLE";
     Button bEnviar;
     EditText eCorreo, eCelular, eMensaje;
-    String vacancy,name;
+    String vacancy,name,matricula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +33,8 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
         Bundle b = getIntent().getExtras();
         vacancy = b.getString("vacancy");
         name = b.getString("name");
+        matricula = b.getString("matricula");
+
 
         bEnviar = (Button) findViewById(R.id.bEnviar);
         eCorreo = (EditText) findViewById(R.id.eCorreo);
@@ -79,6 +81,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
             Bundle b = new Bundle();
             b.putString("image", "");
             b.putInt("current", 1);
+            b.putString("matricula",matricula);
             intent.putExtras(b);
             startActivity(intent);
         }
@@ -110,6 +113,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
                 Bundle b = new Bundle();
                 b.putString("image","");
                 b.putInt("current", 1);
+                b.putString("matricula",matricula);
                 intent.putExtras(b);
                 startActivity(intent);
                 break;

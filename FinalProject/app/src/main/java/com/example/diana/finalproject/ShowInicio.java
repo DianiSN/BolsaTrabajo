@@ -20,14 +20,17 @@ public class ShowInicio extends BaseAdapter
     String [] result;
     Context context;
     int [] imageId;
+    String matricula  = "";
     private static LayoutInflater inflater=null;
 
-    public ShowInicio(Inicio inicio, String[] company, int[] logo)
+    public ShowInicio(Inicio inicio, String[] company, int[] logo, String matricula)
     {
 
         result=company; //array of the companies names
         context=inicio;
+        this.matricula = matricula;
         imageId=logo; //array of the companies logos
+
 
         inflater = ( LayoutInflater )context. getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -85,6 +88,7 @@ public class ShowInicio extends BaseAdapter
                 b.putInt("position",position);
 //                intent.putExtras(b);
                 b.putString("name",result[position]);
+                b.putString("matricula",matricula);
                 intent.putExtras(b);
                 v.getContext().startActivity(intent);
                 Log.i("CREATION", result[position]);
