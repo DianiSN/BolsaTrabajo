@@ -146,6 +146,10 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
         }else
         {
             Intent intent = new Intent(this, ShowTabs.class);
+            Bundle b = new Bundle();
+            b.putString("image","");
+            b.putInt("current",1);
+            intent.putExtras(b);
             startActivity(intent);
         }
     }
@@ -160,6 +164,10 @@ public class Vacante extends AppCompatActivity implements View.OnClickListener
                 Log.i("CREATION", "Aplicar");
                 finish();
                 Intent i = new Intent(this,Solicitud.class);
+                Bundle b = new Bundle();
+                b.putString("vacancy",job[position]);
+                b.putString("name",name);
+                i.putExtras(b);
                 startActivity(i);
                 break;
             case R.id.imageButton: // se ha picado el boton para ponerlo en favoritos
