@@ -122,14 +122,12 @@ public class Perfil extends AppCompatActivity {
             return;
         }
         result.moveToFirst();
-        experiencia.setText(result.getString(0));
-        proyectos.setText(result.getString(1));
-        habilidades.setText(result.getString(2));
-        intereses.setText(result.getString(3));
-        actividades.setText(result.getString(4));
+        experiencia.setText(result.getString(1));
+        proyectos.setText(result.getString(2));
+        habilidades.setText(result.getString(3));
+        intereses.setText(result.getString(4));
+        actividades.setText(result.getString(5));
     }
-
-
 }
 
 
