@@ -90,7 +90,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         {
             Intent intent = new Intent(this, ShowTabs.class);
             Bundle b = new Bundle();
-            b.putString("image",imgDecodableString);
+            b.putString("image",null);
             b.putString("matricula",matricula);
             b.putInt("current",2);
             intent.putExtras(b);
@@ -235,7 +235,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
                 finish();
                 Intent in = new Intent(getApplicationContext(), ShowTabs.class);
                 Bundle bi = new Bundle();
-                bi.putString("image","");
+                bi.putString("image",null);
                 bi.putInt("current",2);
                 bi.putString("matricula",matricula);
                 in.putExtras(bi);
