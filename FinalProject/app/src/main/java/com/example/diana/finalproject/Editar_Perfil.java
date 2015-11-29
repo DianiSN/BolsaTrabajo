@@ -20,10 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-/**
- * Created by Andrea on 30/09/2015.
- */
 public class Editar_Perfil extends AppCompatActivity implements View.OnClickListener {
     TextView name;
     Button bCancel, bSave,bFoto;
@@ -132,10 +128,10 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         boolean isUpdated = db.updateDataProfile(matricula, exp, hab, pro, inte, ext);
         if (isUpdated)
         {
-            Toast.makeText(this, "Perfil editado.", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Perfil editado.", Toast.LENGTH_LONG).show();
 
         } else {
-            Toast.makeText(this, "Perfil no editado. Intente de nuevo.", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Perfil no editado. Intente de nuevo.", Toast.LENGTH_LONG).show();
 
         }
     }
