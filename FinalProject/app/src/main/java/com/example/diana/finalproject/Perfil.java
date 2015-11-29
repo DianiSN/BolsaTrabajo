@@ -3,6 +3,7 @@ package com.example.diana.finalproject;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,11 +11,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.TextView;
 
 /**
  * Created by Andrea on 29/09/2015.
  */
 public class Perfil extends AppCompatActivity {
+
+    DataBaseHelper db;
+    TextView experiencia, habilidades, intereses, proyectos, name, actividades;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -63,6 +69,20 @@ public class Perfil extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+    }
+
+    public void getData(View view, String matricula) {
+        /*String  = idEditText.getText().toString();
+        Cursor result = database.getData(id);
+        if (result.getCount() == 0) {
+            showMessage("Error", "No data found");
+            return;
+        }
+        result.moveToFirst();
+        idEditText.setText(result.getString(0));
+        nameEditText.setText(result.getString(1));
+        courseEditText.setText(result.getString(2));
+        date_dueEditText.setText(result.getString(3));*/
     }
 
 
