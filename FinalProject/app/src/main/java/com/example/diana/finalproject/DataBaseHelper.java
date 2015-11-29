@@ -13,7 +13,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     public static final String DB_NAME = "bolsaTrabajo.db";
     public static final String TABLE_NAMEB = "perfil";
-    public static final String COL_1B = "MATRICULA";
+    public static final String COL_1B = "MATRICULA1";
     public static final String COL_2B = "EXPERIENCIA";
     public static final String COL_3B = "PROYECTOS";
     public static final String COL_4B = "HABILIDADES";
@@ -36,7 +36,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAMEB +
-                " (MATRICULA TEXT PRIMARY KEY NOT NULL, EXPERIENCIA TEXT, PROYECTOS TEXT, HABILIDADES TEXT, INTERESES TEXT, EXTRA TEXT, FOTO INTEGER);");
+                " (MATRICULA1 TEXT PRIMARY KEY NOT NULL, EXPERIENCIA TEXT, PROYECTOS TEXT, HABILIDADES TEXT, INTERESES TEXT, EXTRA TEXT, FOTO INTEGER);");
 
         db.execSQL("CREATE TABLE " + TABLE_NAME +
                 " (MATRICULA TEXT PRIMARY KEY NOT NULL, NOMBRE TEXT, APELLIDOS TEXT, CORREO_ALT TEXT, CONTRASENA TEXT);");
@@ -66,7 +66,13 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     public Cursor getMail(String matricula) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result  = db.rawQuery("SELECT CORREO_ALT FROM " + TABLE_NAME + " WHERE MATRICULA =" + matricula, null);
+        Cursor result  = db.rawQuery("SELECT CORREO_ALT FROM " + TABLE_NAME + " WHERE MATRICULA ='" + matricula +"'", null);
+        return result;
+    }
+
+    public Cursor getNombre(String matricula) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result  = db.rawQuery("SELECT NOMBRE, APELLIDOS FROM " + TABLE_NAME + " WHERE MATRICULA ='" + matricula +"'", null);
         return result;
     }
 
@@ -106,7 +112,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         contentValues.put(COL_5B,intereses);
         contentValues.put(COL_6B,extra);
 
-        db.update(TABLE_NAMEB, contentValues, "MATRICULA = ?", new String[]{matricula});
+        db.update(TABLE_NAMEB, contentValues, "MATRICULA1 = ?", new String[]{matricula});
         return true;
     }
 
@@ -116,14 +122,14 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
         contentValues.put(COL_7B,foto);
 
-        db.update(TABLE_NAMEB, contentValues, "MATRICULA = ?", new String[]{matricula});
+        db.update(TABLE_NAMEB, contentValues, "MATRICULA1 = ?", new String[]{matricula});
         return true;
 
     }
 
     public Cursor getDataProfile(String matricula) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor result  = db.rawQuery("SELECT * FROM " + TABLE_NAMEB + " WHERE MATRICULA =" + matricula, null);
+        Cursor result  = db.rawQuery("SELECT * FROM " + TABLE_NAMEB + " WHERE MATRICULA1 ='" + matricula + "'", null);
         return result;
     }
 

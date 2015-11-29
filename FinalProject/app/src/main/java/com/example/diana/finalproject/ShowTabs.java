@@ -19,6 +19,7 @@ public class ShowTabs extends Activity {
     private TabHost myTabHost;
     int current;
     String image;
+    String matricula;
 
 
 
@@ -30,6 +31,8 @@ public class ShowTabs extends Activity {
         Bundle b = getIntent().getExtras();
         image = b.getString("image");
         current = b.getInt("current");
+        matricula = b.getString("matricula");
+
 //        widget = (TabWidget)findViewById(R.id.lltab1);
 //        get tabHost
 
@@ -71,11 +74,12 @@ public class ShowTabs extends Activity {
         Intent intentProfile = new Intent().setClass(this, Perfil.class);
         Bundle d = new Bundle();
         b.putString("image",image);
+        Log.d("Bundle", matricula);
+        d.putString("matricula", matricula);
         intentProfile.putExtras(d);
         tabProfile.setContent(intentProfile);
         tabProfile.setIndicator("Perfil");
         myTabHost.addTab(tabProfile);
-
         myTabHost.setCurrentTab(current);
 
     }

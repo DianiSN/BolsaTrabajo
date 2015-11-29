@@ -25,29 +25,38 @@ public class Perfil extends AppCompatActivity {
 
     DataBaseHelper db;
     TextView experiencia, habilidades, intereses, proyectos, name, actividades;
-    ImageView imageView;
 
     String image;
     ImageView imgView;
+    String matricula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+
+        db = new DataBaseHelper(this);
         imgView = (ImageView)findViewById(R.id.imageView);
+        name = (TextView) findViewById(R.id.name);
+        experiencia = (TextView) findViewById(R.id.experiencia);
+        habilidades = (TextView) findViewById(R.id.habilidades);
+        intereses = (TextView) findViewById(R.id.intereses);
+        proyectos = (TextView) findViewById(R.id.proyectos);
+        actividades = (TextView) findViewById(R.id.actividades);
+
         Bundle b = getIntent().getExtras();
         image = b.getString("image");
+        matricula = b.getString("matricula");
+        Log.d("CREATION Perfil", "matricula = " + matricula);
         if(image == null){
-
             imgView.setImageResource(R.drawable.samanta);
-
         }else{
-
             imgView.setImageBitmap(BitmapFactory
                     .decodeFile(image));
-
         }
+        getData(matricula);
+
     }
 
 
@@ -93,22 +102,32 @@ public class Perfil extends AppCompatActivity {
         }
     }
 
-    public void getData(View view, String matricula) {
+    public void getData(String matricula) {
+        Log.d("mat = ",  matricula);
+        String userName;
+        Cursor nombre = db.getNombre(matricula);
+        if (nombre.getCount() == 0){
+            Toast.makeText(this, "No existe usuario", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+            nombre.moveToFirst();
+            userName = nombre.getString(0).concat(" ").concat(nombre.getString(1));
+            Log.d("Nombre user= ", userName );
+        }
+
+        name.setText(userName);
         Cursor result = db.getDataProfile(matricula);
         if (result.getCount() == 0) {
-            Toast.makeText(this, "No data was found", Toast.LENGTH_LONG);
+            Toast.makeText(this, "No existe informacion del usuario", Toast.LENGTH_LONG).show();
             return;
         }
         result.moveToFirst();
-        name.setText(result.getString(0));
         experiencia.setText(result.getString(1));
         proyectos.setText(result.getString(2));
         habilidades.setText(result.getString(3));
         intereses.setText(result.getString(4));
         actividades.setText(result.getString(5));
     }
-
-
 }
 
 
