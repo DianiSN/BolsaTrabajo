@@ -89,6 +89,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(this, ShowTabs.class);
             Bundle b = new Bundle();
             b.putString("image",imgDecodableString);
+            b.putString("matricula",matricula);
             b.putInt("current",2);
             intent.putExtras(b);
             startActivity(intent);
@@ -187,19 +188,25 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
                 Intent i = new Intent(getApplicationContext(), ShowTabs.class);
                 Bundle b = new Bundle();
                 b.putString("image",imgDecodableString);
-                b.putInt("current",2);
+                b.putInt("current", 2);
+                b.putString("matricula",matricula);
                 i.putExtras(b);
                 startActivity(i);
                 break;
 
             case R.id.bCancel:
                 finish();
-                startActivity(new Intent(getApplicationContext(), Perfil.class));
+                Intent in = new Intent(getApplicationContext(), ShowTabs.class);
+                Bundle bi = new Bundle();
+                bi.putString("image","");
+                bi.putInt("current",2);
+                bi.putString("matricula",matricula);
+                in.putExtras(bi);
+                startActivity(in);
                 break;
             case R.id.bfoto:
                 loadImagefromGallery(v);
 //              Toast.makeText(this, "Change pic", Toast.LENGTH_LONG).show();
-
                 break;
 
         }
