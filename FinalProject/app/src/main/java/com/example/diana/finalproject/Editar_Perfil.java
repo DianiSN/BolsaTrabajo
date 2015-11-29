@@ -33,6 +33,8 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
     String imgDecodableString;
     String matricula;
 
+    EditText experiencias,habilidades,proyectos,intereses,extra,actividades;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -54,6 +56,10 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         matricula = b.getString("matricula");
         Log.d("Editar_perf", matricula);
         getName(matricula);
+
+        // load previous info
+
+       getData(matricula);
     }
 
     @Override
@@ -109,28 +115,62 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         name.setText(userName);
     }
 
-    public void updateData(View view) {
-
-        EditText experiencias,habilidades,proyectos,intereses,extra;
-        experiencias = (EditText)view.findViewById(R.id.editExperiencia);
-        habilidades = (EditText)view.findViewById(R.id.editHabilidades);
-        proyectos = (EditText)view.findViewById(R.id.editPoyectos);
-        intereses = (EditText)view.findViewById(R.id.editIntereses);
-        extra = (EditText)view.findViewById(R.id.editActividades);
+    public void updateData()
+    {
+        experiencias = (EditText)findViewById(R.id.editExperiencia);
+        habilidades = (EditText)findViewById(R.id.editHabilidades);
+        proyectos = (EditText)findViewById(R.id.editPoyectos);
+        intereses = (EditText)findViewById(R.id.editIntereses);
+        extra = (EditText)findViewById(R.id.editActividades);
 
         String exp = experiencias.getText().toString();
         String hab = habilidades.getText().toString();
         String pro = proyectos.getText().toString();
-        String inte= intereses.getText().toString();
+        String inte = intereses.getText().toString();
         String ext = extra.getText().toString();
 
-////        boolean isUpdated = db.updateDataProfile(matricula,exp,hab,pro,inte,ext);
-//        if (isUpdated) {
-//            Toast.makeText(this, "The data was updated", Toast.LENGTH_LONG);
-//        } else {
-//            Toast.makeText(this, "The data was not updated", Toast.LENGTH_LONG);
-//
-//        }
+        boolean isUpdated = db.updateDataProfile(matricula, exp, hab, pro, inte, ext);
+        if (isUpdated)
+        {
+            Toast.makeText(this, "Perfil editado.", Toast.LENGTH_LONG);
+
+        } else {
+            Toast.makeText(this, "Perfil no editado. Intente de nuevo.", Toast.LENGTH_LONG);
+
+        }
+    }
+
+    public void getData(String matricula) {
+        String userName;
+
+        Cursor nombre = db.getNombre(matricula);
+        if (nombre.getCount() == 0){
+            Toast.makeText(this, "No existe usuario", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+            nombre.moveToFirst();
+            userName = nombre.getString(0).concat(" ").concat(nombre.getString(1));
+        }
+
+
+        Cursor result = db.getDataProfile(matricula);
+        if (result.getCount() == 0) {
+            Toast.makeText(this, "No existe informacion del usuario", Toast.LENGTH_LONG).show();
+            return;
+        }
+        result.moveToFirst();
+        experiencias = (EditText)findViewById(R.id.editExperiencia);
+        habilidades = (EditText)findViewById(R.id.editHabilidades);
+        proyectos = (EditText)findViewById(R.id.editPoyectos);
+        intereses = (EditText)findViewById(R.id.editIntereses);
+        extra = (EditText)findViewById(R.id.editActividades);
+
+
+        experiencias.setText(result.getString(1));
+        proyectos.setText(result.getString(3));
+        habilidades.setText(result.getString(2));
+        intereses.setText(result.getString(4));
+       extra.setText(result.getString(5));
     }
 
     public void loadImagefromGallery(View view) {
@@ -184,6 +224,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         {
             case R.id.bSave:
 
+                updateData();
                 finish();
                 Intent i = new Intent(getApplicationContext(), ShowTabs.class);
                 Bundle b = new Bundle();
