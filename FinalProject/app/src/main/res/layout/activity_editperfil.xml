@@ -26,7 +26,7 @@
                     android:layout_row="0"
                     android:layout_column="0"
                     android:src="@drawable/samanta"
-                    android:scaleType="center"/>
+                    android:scaleType="centerCrop"/>
 
                 <GridLayout
                     android:layout_width="240dp"
