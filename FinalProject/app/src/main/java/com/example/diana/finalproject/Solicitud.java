@@ -79,7 +79,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
         {
             Intent intent = new Intent(this, ShowTabs.class);
             Bundle b = new Bundle();
-            b.putString("image", "");
+            b.putString("image", null);
             b.putInt("current", 1);
             b.putString("matricula",matricula);
             intent.putExtras(b);
