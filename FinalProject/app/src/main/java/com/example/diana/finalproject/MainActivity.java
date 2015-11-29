@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Cursor result = db.getInicio(matricula);
 
         if (result.getCount() == 0) {
-            Toast.makeText(this, "The user doesn't exist", Toast.LENGTH_LONG).show();
             return false;
         }
 
@@ -94,10 +93,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String contra  = result.getString(0);
             Log.d("Create ", contra);
             if(contra.equals(cont)){
-                Toast.makeText(this, "Login", Toast.LENGTH_LONG).show();
                 return true;
             } else {
-                Toast.makeText(this, "Not login", Toast.LENGTH_LONG).show();
                 return false;
             }
         }
@@ -120,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             finish();
                             startActivity(new Intent(getApplicationContext(), ShowTabs.class));
                         } else {
-                            Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Usuario/Contraseña inválidos", Toast.LENGTH_LONG).show();
                         }
                         break;
 
