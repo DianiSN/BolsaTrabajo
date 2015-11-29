@@ -51,6 +51,7 @@ public class Perfil extends AppCompatActivity {
         if(image == null){
             imgView.setImageResource(R.drawable.samanta);
         }else{
+            Toast.makeText(this, "Image not null", Toast.LENGTH_LONG).show();
             imgView.setImageBitmap(BitmapFactory
                     .decodeFile(image));
         }

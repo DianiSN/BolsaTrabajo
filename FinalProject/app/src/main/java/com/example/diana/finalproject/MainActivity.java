@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             finish();
                             Intent i = new Intent(getApplicationContext(), ShowTabs.class);
                             Bundle b = new Bundle();
-                            b.putString("image","");
+                            b.putString("image",null);
                             b.putString("matricula", eMatricula.getText().toString());
                             b.putInt("current",1);
                             i.putExtras(b);
