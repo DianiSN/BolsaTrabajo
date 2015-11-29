@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -24,17 +25,22 @@ import android.widget.Toast;
  * Created by Andrea on 30/09/2015.
  */
 public class Editar_Perfil extends AppCompatActivity implements View.OnClickListener {
+    TextView name;
     Button bCancel, bSave,bFoto;
     ImageView imgPP;
     DataBaseHelper db;
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
+    String matricula;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editperfil); // edit perfil
 
+        db = new DataBaseHelper(this);
+        name = (TextView) findViewById(R.id.name);
         bCancel = (Button) findViewById(R.id.bCancel);
         bSave = (Button) findViewById(R.id.bSave);
         bFoto = (Button) findViewById(R.id.bfoto);
@@ -44,7 +50,10 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         bSave.setOnClickListener(this);
         bFoto.setOnClickListener(this);
 
-
+        Bundle b = getIntent().getExtras();
+        matricula = b.getString("matricula");
+        Log.d("Editar_perf", matricula);
+        getName(matricula);
     }
 
     @Override
@@ -84,6 +93,19 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
             intent.putExtras(b);
             startActivity(intent);
         }
+    }
+
+    public void getName(String matricula){
+        String userName;
+        Cursor nombre = db.getNombre(matricula);
+        if (nombre.getCount() == 0){
+            Toast.makeText(this, "No existe usuario", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+            nombre.moveToFirst();
+            userName = nombre.getString(0).concat(" ").concat(nombre.getString(1));
+        }
+        name.setText(userName);
     }
 
     public void updateData(View view) {

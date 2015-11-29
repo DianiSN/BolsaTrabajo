@@ -74,7 +74,6 @@ public class ShowTabs extends Activity {
         Intent intentProfile = new Intent().setClass(this, Perfil.class);
         Bundle d = new Bundle();
         b.putString("image",image);
-        Log.d("Bundle", matricula);
         d.putString("matricula", matricula);
         intentProfile.putExtras(d);
         tabProfile.setContent(intentProfile);

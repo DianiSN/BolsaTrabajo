@@ -48,7 +48,6 @@ public class Perfil extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         image = b.getString("image");
         matricula = b.getString("matricula");
-        Log.d("CREATION Perfil", "matricula = " + matricula);
         if(image == null){
             imgView.setImageResource(R.drawable.samanta);
         }else{
@@ -76,8 +75,12 @@ public class Perfil extends AppCompatActivity {
 
         if (id == R.id.action_edit) {
             finish();
-            startActivity(new Intent(getApplicationContext(), Editar_Perfil.class));
-
+            Intent i = new Intent().setClass(this, Editar_Perfil.class);
+            Bundle c = new Bundle();
+            c.putString("matricula", matricula);
+            Log.d("Mat Per bundle", c.getString("matricula"));
+            i.putExtras(c);
+            startActivity(i);
             return true;
         }
         else if(id == R.id.action_logout){
@@ -103,7 +106,6 @@ public class Perfil extends AppCompatActivity {
     }
 
     public void getData(String matricula) {
-        Log.d("mat = ",  matricula);
         String userName;
         Cursor nombre = db.getNombre(matricula);
         if (nombre.getCount() == 0){
@@ -112,7 +114,6 @@ public class Perfil extends AppCompatActivity {
         } else {
             nombre.moveToFirst();
             userName = nombre.getString(0).concat(" ").concat(nombre.getString(1));
-            Log.d("Nombre user= ", userName );
         }
 
         name.setText(userName);
