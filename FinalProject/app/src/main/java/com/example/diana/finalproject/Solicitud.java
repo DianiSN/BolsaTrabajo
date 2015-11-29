@@ -21,7 +21,7 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
     public static final String EMPRESA_BUNDLE = "EMPRESA_BUNDLE";
     Button bEnviar;
     EditText eCorreo, eCelular, eMensaje;
-    String vacancy;
+    String vacancy,name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,12 +32,14 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
 
         Bundle b = getIntent().getExtras();
         vacancy = b.getString("vacancy");
+        name = b.getString("name");
 
         bEnviar = (Button) findViewById(R.id.bEnviar);
         eCorreo = (EditText) findViewById(R.id.eCorreo);
         eCelular = (EditText) findViewById(R.id.eCelular);
         eMensaje = (EditText) findViewById(R.id.eMensaje);
 
+        eCorreo.setText(name+"@"+name+".com");
 
         bEnviar.setOnClickListener(this);
 
@@ -74,6 +76,10 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
         }else
         {
             Intent intent = new Intent(this, ShowTabs.class);
+            Bundle b = new Bundle();
+            b.putString("image", "");
+            b.putInt("current", 1);
+            intent.putExtras(b);
             startActivity(intent);
         }
     }
@@ -100,6 +106,12 @@ public class Solicitud extends AppCompatActivity implements View.OnClickListener
                 Log.i("CREATION", "Enviar solicitud");
                 sendEmail();
                 Log.i("CREATION", "solicitud Enviada");
+                Intent intent = new Intent(this, ShowTabs.class);
+                Bundle b = new Bundle();
+                b.putString("image","");
+                b.putInt("current", 1);
+                intent.putExtras(b);
+                startActivity(intent);
                 break;
         }
     }

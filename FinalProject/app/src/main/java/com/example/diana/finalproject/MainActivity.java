@@ -118,7 +118,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Log.d("CREATION", "INICIO is being executed!");
                         if (loginn){
                             finish();
-                            startActivity(new Intent(getApplicationContext(), ShowTabs.class));
+                            Intent i = new Intent(getApplicationContext(), ShowTabs.class);
+                            Bundle b = new Bundle();
+                            b.putString("image","");
+                            b.putInt("current",1);
+                            i.putExtras(b);
+                            startActivity(i);
                         } else {
                             Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
                         }

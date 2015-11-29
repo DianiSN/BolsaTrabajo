@@ -17,7 +17,8 @@ import android.widget.TabWidget;
 public class ShowTabs extends Activity {
 
     private TabHost myTabHost;
-
+    int current;
+    String image;
 
 
 
@@ -26,6 +27,9 @@ public class ShowTabs extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabhost);
+        Bundle b = getIntent().getExtras();
+        image = b.getString("image");
+        current = b.getInt("current");
 //        widget = (TabWidget)findViewById(R.id.lltab1);
 //        get tabHost
 
@@ -65,11 +69,14 @@ public class ShowTabs extends Activity {
 //        PROFILE
 
         Intent intentProfile = new Intent().setClass(this, Perfil.class);
+        Bundle d = new Bundle();
+        b.putString("image",image);
+        intentProfile.putExtras(d);
         tabProfile.setContent(intentProfile);
         tabProfile.setIndicator("Perfil");
         myTabHost.addTab(tabProfile);
 
-        myTabHost.setCurrentTab(1);
+        myTabHost.setCurrentTab(current);
 
     }
 

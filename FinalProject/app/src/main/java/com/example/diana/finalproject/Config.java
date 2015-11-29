@@ -6,6 +6,6 @@ package com.example.diana.finalproject;
 public class Config {
 
     public static final String EMAIL ="a01320622";
-    public static final String PASSWORD ="Naruto22.";
+    public static final String PASSWORD ="Naruto24.";
 
 }

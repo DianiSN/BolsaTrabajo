@@ -78,6 +78,10 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         }else
         {
             Intent intent = new Intent(this, ShowTabs.class);
+            Bundle b = new Bundle();
+            b.putString("image",imgDecodableString);
+            b.putInt("current",2);
+            intent.putExtras(b);
             startActivity(intent);
         }
     }
@@ -141,11 +145,11 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
                         .decodeFile(imgDecodableString));
 
             } else {
-                Toast.makeText(this, "You haven't picked Image",
+                Toast.makeText(this, "No elegiste una imagen",
                         Toast.LENGTH_LONG).show();
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
+            Toast.makeText(this, "Oops hubo un problema", Toast.LENGTH_LONG)
                     .show();
         }
 
@@ -158,7 +162,12 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
             case R.id.bSave:
 
                 finish();
-                startActivity(new Intent(getApplicationContext(), Perfil.class));
+                Intent i = new Intent(getApplicationContext(), ShowTabs.class);
+                Bundle b = new Bundle();
+                b.putString("image",imgDecodableString);
+                b.putInt("current",2);
+                i.putExtras(b);
+                startActivity(i);
                 break;
 
             case R.id.bCancel:

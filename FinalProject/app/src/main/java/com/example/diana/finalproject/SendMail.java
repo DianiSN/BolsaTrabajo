@@ -2,6 +2,7 @@ package com.example.diana.finalproject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -55,6 +56,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
         progressDialog.dismiss();
         //Showing a success message
         Toast.makeText(context, "Solicitud enviada", Toast.LENGTH_LONG).show();
+
     }
 
     @Override

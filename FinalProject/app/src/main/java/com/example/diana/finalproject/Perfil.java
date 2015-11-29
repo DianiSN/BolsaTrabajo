@@ -3,6 +3,7 @@ package com.example.diana.finalproject;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,16 +11,33 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 /**
  * Created by Andrea on 29/09/2015.
  */
 public class Perfil extends AppCompatActivity {
+
+    String image;
+    ImageView imgView;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        imgView = (ImageView)findViewById(R.id.imageView);
+        Bundle b = getIntent().getExtras();
+        image = b.getString("image");
+        if(image == null){
+
+            imgView.setImageResource(R.drawable.samanta);
+
+        }else{
+
+            imgView.setImageBitmap(BitmapFactory
+                    .decodeFile(image));
+
+        }
     }
 
 
