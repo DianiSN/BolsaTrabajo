@@ -15,6 +15,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import android.widget.ImageView;
+import android.widget.Toast;
 
 /**
  * Created by Andrea on 29/09/2015.
@@ -24,6 +25,7 @@ public class Perfil extends AppCompatActivity {
 
     DataBaseHelper db;
     TextView experiencia, habilidades, intereses, proyectos, name, actividades;
+    ImageView imageView;
 
     String image;
     ImageView imgView;
@@ -92,17 +94,18 @@ public class Perfil extends AppCompatActivity {
     }
 
     public void getData(View view, String matricula) {
-        /*String  = idEditText.getText().toString();
-        Cursor result = database.getData(id);
+        Cursor result = db.getDataProfile(matricula);
         if (result.getCount() == 0) {
-            showMessage("Error", "No data found");
+            Toast.makeText(this, "No data was found", Toast.LENGTH_LONG);
             return;
         }
         result.moveToFirst();
-        idEditText.setText(result.getString(0));
-        nameEditText.setText(result.getString(1));
-        courseEditText.setText(result.getString(2));
-        date_dueEditText.setText(result.getString(3));*/
+        name.setText(result.getString(0));
+        experiencia.setText(result.getString(1));
+        proyectos.setText(result.getString(2));
+        habilidades.setText(result.getString(3));
+        intereses.setText(result.getString(4));
+        actividades.setText(result.getString(5));
     }
 
 

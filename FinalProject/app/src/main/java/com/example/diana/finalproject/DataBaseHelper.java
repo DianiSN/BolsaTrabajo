@@ -13,7 +13,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     public static final String DB_NAME = "bolsaTrabajo.db";
     public static final String TABLE_NAMEB = "perfil";
-    public static final String COL_1B = "MATRICULA1";
+    public static final String COL_1B = "MATRICULA";
     public static final String COL_2B = "EXPERIENCIA";
     public static final String COL_3B = "PROYECTOS";
     public static final String COL_4B = "HABILIDADES";
