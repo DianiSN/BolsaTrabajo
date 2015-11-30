@@ -1,6 +1,11 @@
 package com.example.diana.finalproject;
 
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,37 +20,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
-    Button bLogin;
-    EditText eMatricula, eContrasena;
+    DataBaseHelper db;
+    Button bLogin;    EditText eMatricula, eContrasena;
     TextView tvLinkRegistro, tvOlvidoPass;
-    /*
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item)
-        {
-            int id = item.getItemId();
-            if (id == R.id.tvLinkRegistro)
-            {
-                Log.d("CREATION", "tvLinkRegistro is being executed!");
-                finish();
-                Intent i = new Intent(this,Registro.class);
-                startActivity(i);
-            }
-            return super.onOptionsItemSelected(item);
-        }
-    */
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.i("CREATION", "holiwis");
+        db = new DataBaseHelper(this);
+        Log.i("CREATION", "holi guapas");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // activity_main
 
@@ -60,33 +49,96 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvOlvidoPass.setOnClickListener(this);
     }
 
-    //@Override
-    public void onClick(View v)
-    {
+    @Override
 
-        switch(v.getId())
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings)
         {
-            case R.id.bLogin:
+            Toast.makeText(MainActivity.this, "Ayyyyy!",
+                    Toast.LENGTH_SHORT).show();
+            return true;
+        }
 
-                Log.d("CREATION", "bLogin is being executed!");
-                finish();
-                startActivity(new Intent(getApplicationContext(), Inicio.class));
-                break;
+        return super.onOptionsItemSelected(item);
+    }
 
-            case R.id.tvLinkRegistro:
 
-                Log.d("CREATION", "tvLinkRegistro is being executed!");
-                finish();
-                Intent i = new Intent(this,Registro.class);
-                startActivity(i);
-                break;
+    public void onBackPressed()
+    {
+        Log.d("CREATION", "go back pressed!");
+        if(getFragmentManager().getBackStackEntryCount()>0)
+        {
+            getFragmentManager().popBackStackImmediate();
+        }
+    }
 
-            case R.id.tvOlvidoPass:
-                Log.d("CREATION", "tvOlvidoPass is being executed!");
-                finish();
-                i = new Intent(this,Recupera.class);
-                startActivity(i);
-                break;
+    public boolean login(){
+        String matricula = eMatricula.getText().toString();
+        String cont = eContrasena.getText().toString();
+
+        Cursor result = db.getInicio(matricula);
+
+        if (result.getCount() == 0) {
+            return false;
+        }
+
+        while(result.moveToNext()) {
+            String contra  = result.getString(0);
+            if(contra.equals(cont)){
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    //@Override
+    public void onClick(View v) // botones
+            {
+                boolean loginn;
+
+                switch(v.getId())
+                {
+
+                    case R.id.bLogin:
+                        loginn = login();
+                        Log.d("CREATION", "INICIO is being executed!");
+                        if (loginn){
+                            finish();
+                            Intent i = new Intent(getApplicationContext(), ShowTabs.class);
+                            Bundle b = new Bundle();
+                            b.putString("image",null);
+                            b.putString("matricula", eMatricula.getText().toString());
+                            b.putInt("current",1);
+                            i.putExtras(b);
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(this, "Usuario/Contraseña inválidos", Toast.LENGTH_LONG).show();
+                        }
+                        break;
+
+                    case R.id.tvLinkRegistro:
+
+                        Log.d("CREATION", "REGISTRO is being executed!");
+                        finish();
+                        Intent i = new Intent(this,Registro.class);
+                        startActivity(i);
+                        break;
+
+                    case R.id.tvOlvidoPass:
+                        Log.d("CREATION", "FORGOTTEN PASS is being executed!");
+                        finish();
+                        i = new Intent(this,Recupera.class);
+                        startActivity(i);
+                        break;
 
         }
     }

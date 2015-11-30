@@ -1,17 +1,19 @@
 
 <!-- Sync -->
+
 <!-- Search -->
 
 <!-- Menu desplegable -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-tools:context="com.example.diana.finalproject.Solicitud">
+    tools:context="com.example.diana.finalproject.Solicitud">
 
-
-    <item android:id="@+id/action_info"
-        android:title="Logout"
+    <item android:id="@+id/action_logout"
+        android:title="Salir"
         android:orderInCategory="100"
         app:showAsAction="never"/>
+
+
 
 </menu>

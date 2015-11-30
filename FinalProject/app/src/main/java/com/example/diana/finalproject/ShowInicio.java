@@ -2,7 +2,11 @@ package com.example.diana.finalproject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,25 +14,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by Diana on 9/29/15.
- */
-public class ShowInicio extends BaseAdapter {
+
+public class ShowInicio extends BaseAdapter
+{
     String [] result;
     Context context;
     int [] imageId;
+    String matricula  = "";
     private static LayoutInflater inflater=null;
 
-    public ShowInicio(Inicio inicio, String[] company, int[] logo) {
+    public ShowInicio(Inicio inicio, String[] company, int[] logo, String matricula)
+    {
 
-        result=company;
+        result=company; //array of the companies names
         context=inicio;
-        imageId=logo;
+        this.matricula = matricula;
+        imageId=logo; //array of the companies logos
+
 
         inflater = ( LayoutInflater )context. getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
-
 
 
     @Override
@@ -49,8 +55,13 @@ public class ShowInicio extends BaseAdapter {
         return position;
     }
 
+
+
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent)
+    {
+        // carga este por cada empresa,
+        // carga este por cada empresa cada que bajo la pantalla
 
         View rowView;
         TextView tv;
@@ -60,10 +71,35 @@ public class ShowInicio extends BaseAdapter {
         img=(ImageView) rowView.findViewById(R.id.imageView1);
         tv.setText(result[position]);
         img.setImageResource(imageId[position]);
-        rowView.setOnClickListener(new View.OnClickListener() {
+
+
+
+        // cada que hay clic en una empresa
+
+        rowView.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
+            public void onClick(View v)
+            {
+                //Toast.makeText(context, "You Clicked "+result[position], Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context,Vacante.class);
+                Bundle b = new Bundle();
+                b.putInt("image",imageId[position]);
+                b.putInt("position",position);
+//                intent.putExtras(b);
+                b.putString("name",result[position]);
+                b.putString("matricula",matricula);
+                intent.putExtras(b);
+                v.getContext().startActivity(intent);
+                Log.i("CREATION", result[position]);
+                // Conectar con Vacante.class *************
+
+
+                // Carga la vacante dependiendo la empresa que se dio click
+                // debo enviarle el result[position] para que cargue la debida información
+
+
+
             } });
         return rowView;
 

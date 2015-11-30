@@ -1,0 +1,140 @@
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:layout_width="match_parent">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="132dp"
+                    android:layout_height="134dp"
+                    android:id="@+id/imageView"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:src="@drawable/samanta"
+                    android:scaleType="centerCrop" />
+
+
+                <GridLayout
+                    android:layout_width="240dp"
+                    android:layout_height="130dp"
+                    android:layout_row="1"
+                    android:layout_column="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:id="@+id/name"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="center"
+                        android:textAlignment="center" />
+                </GridLayout>
+
+            </GridLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.57"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="EXPERIENCIA"
+                    android:id="@+id/tvExp"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/experiencia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="PROYECTOS"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
+                    android:id="@+id/tvProy"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/proyectos"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="HABILIDADES"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
+                    android:id="@+id/tvHab"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/habilidades" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="INTERESES"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
+                    android:id="@+id/tvInt"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/intereses"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.18" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="ACTIVIDADES EXTRACURRICULARES"
+                    android:id="@+id/tvActividades"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="15dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/actividades"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.18" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

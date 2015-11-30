@@ -1,19 +1,22 @@
 package com.example.diana.finalproject;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener
 {
-
+    DataBaseHelper database;
     Button bRegistro;
-    EditText eNombre, eApellido, eCorreo, eMatricula, eContrasena;
+    EditText eNombre, eApellido, eCorreo, eMatricula, contrasenia, contrasenia2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,50 +24,77 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
+        database = new DataBaseHelper(this);
         eNombre = (EditText) findViewById(R.id.eNombre);
+        eApellido = (EditText) findViewById(R.id.eApellido);
         eCorreo = (EditText) findViewById(R.id.eCorreo);
         eMatricula = (EditText) findViewById(R.id.eMatricula);
-        eContrasena = (EditText) findViewById(R.id.eContrasena);
+        contrasenia = (EditText) findViewById(R.id.contrasena);
+        contrasenia2 = (EditText) findViewById(R.id.contrasena2);
         bRegistro = (Button) findViewById(R.id.bRegistro);
 
         bRegistro.setOnClickListener(this);
 
     }
 
-
     @Override
-    public void onClick(View v)
+    public void onBackPressed()
+    {
+        Log.d("CREATION", "go back pressed!");
+        if(getFragmentManager().getBackStackEntryCount()>0)
+        {
+            getFragmentManager().popBackStackImmediate();
+        }else
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public void registerUser()
+    {
+        String nombre =  eNombre.getText().toString();
+        String apellido = eApellido.getText().toString();
+        String correo = eCorreo.getText().toString();
+        String matricula = eMatricula.getText().toString();
+        String contraseniaa = contrasenia.getText().toString();
+        String contraseniaa2 = contrasenia2.getText().toString();
+
+        Boolean isInserted = false;
+        if(contraseniaa.equals(contraseniaa2))
+        {
+            isInserted = database.registerUser(matricula, nombre, apellido, correo, contraseniaa);
+            if (database.insertDataProfile(matricula, " ", " ", " "," ", " ", " "))
+                Log.d("Register", "Success");
+
+            if (isInserted)
+            {
+                Toast.makeText(this, "Registro exitoso.", Toast.LENGTH_LONG).show();
+                finish();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            } else
+            {
+                Toast.makeText(this, "Registro no exitoso. Intente de nuevo.", Toast.LENGTH_LONG).show();
+            }
+        }else
+        {
+            Toast.makeText(this, "Las contraseñas no coinciden. Intente de nuevo.", Toast.LENGTH_LONG).show();
+        }
+    }
+        @Override
+    public void onClick(View v) //botones
     {
         switch(v.getId())
         {
             case R.id.bRegistro:
+                    registerUser();
                 break;
+
+
+
         }
     }
 
 
-
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_register, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    */
 }
