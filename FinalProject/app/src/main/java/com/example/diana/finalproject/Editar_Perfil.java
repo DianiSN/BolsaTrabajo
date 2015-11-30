@@ -23,12 +23,12 @@ import android.widget.Toast;
 public class Editar_Perfil extends AppCompatActivity implements View.OnClickListener {
     TextView name;
     Button bCancel, bSave,bFoto;
-    ImageView imgPP;
+    ImageView imgPP, imgePP;
     DataBaseHelper db;
     private static int RESULT_LOAD_IMG = 1;
     String imgDecodableString;
     String matricula;
-
+    String imagenP; // clave
     EditText experiencias,habilidades,proyectos,intereses,extra,actividades;
 
     @Override
@@ -42,7 +42,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         bCancel = (Button) findViewById(R.id.bCancel);
         bSave = (Button) findViewById(R.id.bSave);
         bFoto = (Button) findViewById(R.id.bfoto);
-        imgPP = (ImageView) findViewById(R.id.profilePic);
+        imgePP = (ImageView) findViewById(R.id.profilePic);
 
         bCancel.setOnClickListener(this);
         bSave.setOnClickListener(this);
@@ -118,6 +118,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         proyectos = (EditText)findViewById(R.id.editPoyectos);
         intereses = (EditText)findViewById(R.id.editIntereses);
         extra = (EditText)findViewById(R.id.editActividades);
+        imgPP = (ImageView) findViewById(R.id.profilePic);
 
         String exp = experiencias.getText().toString();
         String hab = habilidades.getText().toString();
@@ -125,8 +126,11 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         String inte = intereses.getText().toString();
         String ext = extra.getText().toString();
 
+
         boolean isUpdated = db.updateDataProfile(matricula, exp, hab, pro, inte, ext);
-        if (isUpdated)
+        boolean isUpdatedPP = db.updateDataProfilePic(matricula,imagenP);
+
+        if (isUpdated && isUpdatedPP)
         {
             Toast.makeText(this, "Perfil editado.", Toast.LENGTH_LONG).show();
 
@@ -160,6 +164,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         proyectos = (EditText)findViewById(R.id.editPoyectos);
         intereses = (EditText)findViewById(R.id.editIntereses);
         extra = (EditText)findViewById(R.id.editActividades);
+        imgPP = (ImageView) findViewById(R.id.profilePic);
 
 
         experiencias.setText(result.getString(1));
@@ -167,6 +172,9 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         habilidades.setText(result.getString(2));
         intereses.setText(result.getString(4));
        extra.setText(result.getString(5));
+        imgPP.setImageBitmap(BitmapFactory
+                .decodeFile(result.getString(6))); //imgDecodableString
+
     }
 
     public void loadImagefromGallery(View view) {
@@ -181,7 +189,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
-            // When an Image is picked
+                // When an Image is picked
             if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
                     && null != data) {
                 // Get the Image from data
@@ -197,11 +205,11 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
 
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 imgDecodableString = cursor.getString(columnIndex);
+                imagenP =  imgDecodableString; // variable
                 cursor.close();
 
                 // Set the Image in ImageView after decoding the String
-                imgPP.setImageBitmap(BitmapFactory
-                        .decodeFile(imgDecodableString));
+                imgPP.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
 
             } else {
                 Toast.makeText(this, "No elegiste una imagen",
@@ -241,6 +249,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
                 in.putExtras(bi);
                 startActivity(in);
                 break;
+
             case R.id.bfoto:
                 loadImagefromGallery(v);
 //              Toast.makeText(this, "Change pic", Toast.LENGTH_LONG).show();

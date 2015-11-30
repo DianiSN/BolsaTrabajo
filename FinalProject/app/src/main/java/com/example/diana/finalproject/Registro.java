@@ -65,7 +65,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
         if(contraseniaa.equals(contraseniaa2))
         {
             isInserted = database.registerUser(matricula, nombre, apellido, correo, contraseniaa);
-            if (database.insertDataProfile(matricula, " ", " ", " "," ", " ", 0))
+            if (database.insertDataProfile(matricula, " ", " ", " "," ", " ", " "))
                 Log.d("Register", "Success");
 
             if (isInserted)
@@ -79,7 +79,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener
             }
         }else
         {
-            Toast.makeText(this, "Las contrase�as no coinciden. Intente de nuevo.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Las contraseñas no coinciden. Intente de nuevo.", Toast.LENGTH_LONG).show();
         }
     }
         @Override

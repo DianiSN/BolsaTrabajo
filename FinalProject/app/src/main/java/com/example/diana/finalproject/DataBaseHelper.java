@@ -36,7 +36,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAMEB +
-                " (MATRICULA1 TEXT PRIMARY KEY NOT NULL, EXPERIENCIA TEXT, PROYECTOS TEXT, HABILIDADES TEXT, INTERESES TEXT, EXTRA TEXT, FOTO INTEGER);");
+                " (MATRICULA1 TEXT PRIMARY KEY NOT NULL, EXPERIENCIA TEXT, PROYECTOS TEXT, HABILIDADES TEXT, INTERESES TEXT, EXTRA TEXT, FOTO TEXT);");
 
         db.execSQL("CREATE TABLE " + TABLE_NAME +
                 " (MATRICULA TEXT PRIMARY KEY NOT NULL, NOMBRE TEXT, APELLIDOS TEXT, CORREO_ALT TEXT, CONTRASENA TEXT);");
@@ -84,7 +84,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
 
     //metodos para insertar o consultar informacion de PROFILE
-    public boolean insertDataProfile(String matricula,String experiencia, String proyectos, String habilidades, String intereses, String extra, int foto) {
+    public boolean insertDataProfile(String matricula,String experiencia, String proyectos, String habilidades, String intereses, String extra, String foto) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1B, matricula);
@@ -116,7 +116,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         return true;
     }
 
-    public boolean updateDataProfilePic(String matricula,int foto){
+    public boolean updateDataProfilePic(String matricula,String foto)
+    {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 

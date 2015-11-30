@@ -129,6 +129,10 @@ public class Perfil extends AppCompatActivity {
         habilidades.setText(result.getString(2));
         intereses.setText(result.getString(4));
         actividades.setText(result.getString(5));
+        imgView.setImageBitmap(BitmapFactory
+                .decodeFile(result.getString(6))); //imgDecodableString
+
+
     }
 }
 
