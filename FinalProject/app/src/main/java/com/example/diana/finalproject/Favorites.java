@@ -30,6 +30,7 @@ public class Favorites extends AppCompatActivity {
 
     public static ArrayList favCompany;
     public static ArrayList favLogo;
+    String matricula;
 
     //name of the images linked to the names
 //    public static int [] logo ={R.drawable.facebook,R.drawable.ge,R.drawable.google,R.drawable.hp,R.drawable.oracle,R.drawable.ti,R.drawable.yelp};
@@ -69,9 +70,12 @@ public class Favorites extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_gridfav);
+        Bundle b = getIntent().getExtras();
+        matricula = b.getString("matricula");
         gv=(GridView) findViewById(R.id.gridView1);
-        gv.setAdapter(new ShowFavorites(this,favCompany,favLogo));
+        gv.setAdapter(new ShowFavorites(this,favCompany,favLogo,matricula));
     }
 
     @Override

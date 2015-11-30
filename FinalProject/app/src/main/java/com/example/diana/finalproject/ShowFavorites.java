@@ -22,13 +22,15 @@ public class ShowFavorites extends BaseAdapter {
     ArrayList result;
     Context context;
     ArrayList imageId;
+    String matricula;
     private static LayoutInflater inflater=null;
 
-    public ShowFavorites(Favorites favorites, ArrayList favoriteCompany, ArrayList logo) {
+    public ShowFavorites(Favorites favorites, ArrayList favoriteCompany, ArrayList logo,String matricula) {
 
         result=favoriteCompany;
         context=favorites;
         imageId=logo;
+        this.matricula = matricula;
 
         inflater = ( LayoutInflater )context. getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -71,6 +73,7 @@ public class ShowFavorites extends BaseAdapter {
                 b.putInt("position",position);
 //                intent.putExtras(b);
                 b.putString("name",result.get(position).toString());
+                b.putString("matricula",matricula);
                 intent.putExtras(b);
                 v.getContext().startActivity(intent);
                 Log.i("CREATION", result.get(position).toString());
