@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
 
         db = new DataBaseHelper(this);
-        Log.i("CREATION", "holi guapas");
+        Log.i("CREATION", "LOGIN");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // activity_main
 

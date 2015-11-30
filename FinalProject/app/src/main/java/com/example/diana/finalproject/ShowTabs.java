@@ -59,6 +59,9 @@ public class ShowTabs extends Activity {
 //        FAVORITES
 
         Intent intentFav = new Intent().setClass(this, Favorites.class);
+        Bundle dis = new Bundle();
+        dis.putString("matricula",matricula);
+        intentFav.putExtras(dis);
         tabFav.setContent(intentFav);
         tabFav.setIndicator("Favoritos");
         myTabHost.addTab(tabFav);
