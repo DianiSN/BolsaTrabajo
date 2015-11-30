@@ -128,11 +128,16 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
 
 
         boolean isUpdated = db.updateDataProfile(matricula, exp, hab, pro, inte, ext);
-        boolean isUpdatedPP = db.updateDataProfilePic(matricula,imagenP);
 
-        if (isUpdated && isUpdatedPP)
+      //  boolean isUpdatedPP = db.updateDataProfilePic(matricula,imagenP);
+
+        if (isUpdated)
         {
             Toast.makeText(this, "Perfil editado.", Toast.LENGTH_LONG).show();
+            if(imagenP != null)
+            {
+                boolean isUpdatedPP = db.updateDataProfilePic(matricula,imagenP);
+            }
 
         } else {
             Toast.makeText(this, "Perfil no editado. Intente de nuevo.", Toast.LENGTH_LONG).show();
@@ -172,8 +177,14 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
         habilidades.setText(result.getString(2));
         intereses.setText(result.getString(4));
        extra.setText(result.getString(5));
-        imgPP.setImageBitmap(BitmapFactory
-                .decodeFile(result.getString(6))); //imgDecodableString
+
+        if(result.getString(6)==null || result.getString(6).equals(" ")){
+            imgPP.setImageResource(R.drawable.samanta);
+        }else{
+            imgPP.setImageBitmap(BitmapFactory
+                    .decodeFile(result.getString(6))); //imgDecodableString
+        }
+
 
     }
 
@@ -232,7 +243,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
                 finish();
                 Intent i = new Intent(getApplicationContext(), ShowTabs.class);
                 Bundle b = new Bundle();
-                b.putString("image",imgDecodableString);
+             //   b.putString("image",imgDecodableString);
                 b.putInt("current", 2);
                 b.putString("matricula",matricula);
                 i.putExtras(b);
@@ -243,7 +254,7 @@ public class Editar_Perfil extends AppCompatActivity implements View.OnClickList
                 finish();
                 Intent in = new Intent(getApplicationContext(), ShowTabs.class);
                 Bundle bi = new Bundle();
-                bi.putString("image",null);
+             //   bi.putString("image",null);
                 bi.putInt("current",2);
                 bi.putString("matricula",matricula);
                 in.putExtras(bi);

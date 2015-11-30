@@ -46,15 +46,9 @@ public class Perfil extends AppCompatActivity {
         actividades = (TextView) findViewById(R.id.actividades);
 
         Bundle b = getIntent().getExtras();
-        image = b.getString("image");
+      //  image = b.getString("image");
         matricula = b.getString("matricula");
-        if(image == null){
-            imgView.setImageResource(R.drawable.samanta);
-        }else{
-            Toast.makeText(this, "Image not null", Toast.LENGTH_LONG).show();
-            imgView.setImageBitmap(BitmapFactory
-                    .decodeFile(image));
-        }
+
         getData(matricula);
 
     }
@@ -129,8 +123,14 @@ public class Perfil extends AppCompatActivity {
         habilidades.setText(result.getString(2));
         intereses.setText(result.getString(4));
         actividades.setText(result.getString(5));
-        imgView.setImageBitmap(BitmapFactory
-                .decodeFile(result.getString(6))); //imgDecodableString
+
+        if(result.getString(6)==null || result.getString(6).equals(" ")){
+            imgView.setImageResource(R.drawable.samanta);
+        }else{
+            imgView.setImageBitmap(BitmapFactory
+                    .decodeFile(result.getString(6))); //imgDecodableString
+        }
+
 
 
     }
